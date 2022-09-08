@@ -1,22 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import EventDetails from './pages/EventDetails';
+import EventDetail from './pages/EventDetails'
+import EventDetail2 from './pages/EventDetails2'
+import './index.css';
 
-const rootElement = document.getElementById('app');
+const rootElement = document.getElementById('root');
 ReactDOM.render(
-
-      <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<App/>}>
-              <Route path='eventdetails' element={<EventDetails/>}/>
-            </Route>
-          </Routes>
-      </BrowserRouter>
-  ,
-  
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
+      </Route>
+      <Route path="eventdetails" element={<EventDetail />} />
+      <Route path="eventdetails2" element={<EventDetail2 />} />
+    </Routes>
+  </BrowserRouter>,
+  rootElement
 );
-reportWebVitals();

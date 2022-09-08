@@ -1,13 +1,20 @@
-import './App.css';
-import {Link} from 'react-router-dom';
-function App() {
+import * as React from 'react';
+import { Outlet, Link } from 'react-router-dom';
+
+export default function App() {
   return (
-    <main className="App">
-      <div style={{backgroundColor:'black', height: '50px', width: '50px'}} >
-      <Link to='/eventdetails'>click me</Link>
+    <div>
+      <h1>Bookkeeper</h1>
+      <div style={{border: '1px solid black'}}>
+        <p>Dette er et event
+        <Link to="/eventdetails">Dette er et link til et event</Link>
+        </p>
       </div>
-    </main>
+      <div style={{border: '1px solid black'}}>
+        <p>Dette er et event
+        <Link to="/eventdetails2">Dette er et link til et event 2</Link>
+        </p>
+      </div>
+    </div>
   );
 }
-
-export default App;
