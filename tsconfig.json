@@ -105,4 +105,5 @@
     "./src/**/*.ts",
     "./src/Styles/*.css",
   ],
+  "exclude": []
 }
