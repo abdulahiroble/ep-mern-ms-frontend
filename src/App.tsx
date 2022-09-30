@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import SliderComponent from './components/SliderComponent';
 import Button from './components/Button';
@@ -23,11 +23,20 @@ const alertTest = ()=>{
 
 export default function App() {
   const [searchEvents, setSearchedEvents] = useState ([]);
+  const [initialData, setInitialData] = useState ([]);
+
+  useEffect(()=>{
+
+    (async function loadData(){
+      setInitialData(await LoadEventCollections.getAllEvents());
+    })();
+
+  },[])
 
 
   const onSearch = async (value: any) => setSearchedEvents(await LoadEventCollections.searchEvent(value));
 
-  console.log("====",searchEvents);
+  console.log("====",initialData);
 
   // setSearchedEvents(value._embedded.events)
   return (
@@ -53,8 +62,10 @@ export default function App() {
           <Cards data={elm} key={index}/>
 
           )) :
-            
-          <><Cards /><Cards /><Cards /><Cards /><Cards /><Cards /><Cards /><Cards /></>
+          initialData.map((elm,index)=>(
+            <Cards data={elm} key={index} />
+
+          ))
           
           }
 
