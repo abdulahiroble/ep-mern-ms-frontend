@@ -35,8 +35,8 @@ export default function App() {
 
 
   const onSearch = async (value: any) =>{
-    setInitialData([]);
-    setSearchedEvents(await LoadEventCollections.searchEvent(value));
+    // setInitialData([]);
+    setInitialData(await LoadEventCollections.searchEvent(value));
   } 
 
 
@@ -59,23 +59,11 @@ export default function App() {
         <Col span={16} style={{marginTop: "5%"}}>
           <Search placeholder="input search text" onSearch={onSearch} enterButton />
           <Row>
-            {searchEvents.length > 0 ? searchEvents.map((elm, index) => (
- 
-              <div key={index}>
-                <Cards data={elm} debug={true}/>
-              </div>
 
-
-            )) :
-              initialData.map((elm, index) => (
-                // <Link to={elm.url}>
-                //   <a>
-                <div key={index}>
+              {initialData.map((elm, index) => (
+                // <div key={index}>
                   <Cards data={elm} debug={false}/>
-                </div>
-                  // </a>
-                // </Link>
-
+                // </div>
               ))
             }
 
