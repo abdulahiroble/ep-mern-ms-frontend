@@ -2,8 +2,9 @@ import {Card} from 'antd';
 import React from 'react';
 const {Meta} = Card;
 
-const Cards = (data) => {
-  console.log(data.data.name);
+const Cards = ({data, debug}) => {
+  if(debug) console.log(data.data);
+  console.log(debug)
   return (
     <Card
       hoverable
@@ -11,9 +12,9 @@ const Cards = (data) => {
         width: 240,
         margin: "2%"
       }}
-      cover={<img alt="example" src={""} />}
+      cover={<img alt="example" src={data.images[0].url} />}
     >
-      <Meta title={data.data.name} />
+      <Meta title={data.name} />
     </Card>
   )
 };
