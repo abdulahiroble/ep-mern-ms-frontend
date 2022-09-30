@@ -1,4 +1,5 @@
-import React from 'react';
+import * as React from 'react';
+import {useState} from 'react';
 import { Link } from 'react-router-dom';
 import SliderComponent from './components/SliderComponent';
 import Button from './components/Button';
@@ -19,9 +20,16 @@ const alertTest = ()=>{
 
 
 
-const onSearch = async (value: string) => console.log(await LoadEventCollections.searchEvent(value));
 
 export default function App() {
+  const [searchEvents, setSearchedEvents] = useState ([]);
+
+
+  const onSearch = async (value: any) => setSearchedEvents(await LoadEventCollections.searchEvent(value));
+
+  console.log("====",searchEvents);
+
+  // setSearchedEvents(value._embedded.events)
   return (
     <div>
       <h1>Bookkeeper</h1>
@@ -41,14 +49,15 @@ export default function App() {
         <Col span={16}  style={{marginTop:"5%"}}>
         <Search placeholder="input search text" onSearch={onSearch} enterButton />
         <Row>
-          <Cards/>
-          <Cards/>
-          <Cards/>
-          <Cards/>
-          <Cards/>
-          <Cards/>
-          <Cards/>
-          <Cards/>
+          {searchEvents.length > 0 ? searchEvents.map((elm,index)=>(
+          <Cards data={elm} key={index}/>
+
+          )) :
+            
+          <><Cards /><Cards /><Cards /><Cards /><Cards /><Cards /><Cards /><Cards /></>
+          
+          }
+
         </Row>
         </Col>
       </Row>
