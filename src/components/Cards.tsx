@@ -11,7 +11,7 @@ const Cards = (data) => {
       width: 240,
       margin:"2%"
     }}
-    cover={<img alt="example" src={data.images[0]} />}
+    cover={<img alt="example" src={""} />}
   >
     <Meta title={data.name} description={data.promoter.name} />
   </Card>

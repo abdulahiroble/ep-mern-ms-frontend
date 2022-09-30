@@ -12,9 +12,15 @@ class LoadEventCollections{
             'zipcode' : input
         }
 
-        const result = await axios.post(`${url}/api/allEvents`, data);
+        const result = await axios.post(`${url}/api/searchEvents`, data);
 
         // console.log(await result.data);
+        return result.data._embedded.events;
+    }
+
+    getAllEvents = async ()=>{
+        const result = await axios.get(`${url}/api/allEvents`);
+
         return result.data._embedded.events;
     }
 }
