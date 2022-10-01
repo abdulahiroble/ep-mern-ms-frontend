@@ -7,7 +7,7 @@ import {Col, Row, Input, Affix, Carousel} from 'antd';
 
 // ==== COMPONENTS ====
 import Cards from './components/Cards';
-import Header from './components/Partials/Header';
+import Navigation from './components/Partials/Navigation';
 import Footer from './components/Partials/Footer';
 // ==== OTHER ====
 import LoadEventCollections from './services/collections/LoadEventCollections';
@@ -31,43 +31,35 @@ export default function App() {
     async function loadData() {
       setInitialData(await LoadEventCollections.getAllEvents());
       setSliderImages(await LoadPropertyCollection.getSliderImages());
-    }
 
+    }
     loadData()
 
   }, [])
 
-  console.log(sliderImages)
   const onSearch = async (value) =>{
-    // setInitialData([]);
     setInitialData(await LoadEventCollections.searchEvent(value));
   } 
-
 
   return (
     <div>
       <Affix>
-      <Header/>
+      <Navigation/>
       </Affix>
-
       <Col type="flex" align="middle" style={{marginTop:"2%", marginBottom:"2%"}}>
         <h1>Event Planner</h1>
       </Col>
-
-        <Carousel style={{height: "20%", border: "1px solid black"}} autoplay>
-
-          <SliderComponent dataResult={sliderImages} />
-        </Carousel>
+      {/* === SLIDER CAROUSEL === */}
+      <SliderComponent dataResult={sliderImages} />
         
       <Row justify="center">
         <Col span={16} style={{marginTop: "5%"}}>
+          {/* === SEARCH === */}
           <Search placeholder="input search text" onSearch={onSearch} enterButton />
+          {/* === CARDS === */}
           <Row>
-
               {initialData.map((elm, index) => (
-                // <div key={index}>
                   <Cards data={elm} key={index} debug={false}/>
-                // </div>
               ))
             }
 

@@ -8,7 +8,7 @@ const styling = {
   paddingTop: "5px"
 }
 
-const Headers = () => (
+const Navigation = () => (
   <Menu mode="horizontal" defaultSelectedKeys={['mail']} theme="dark">
     <Menu.Item key="icon" className="modified-item" style={{width:"10%"}} icon={<img alt="logo"  src="/logo.png"style={{width:"40%"}}/>}>
     {/* <img  src="/logo.png"style={{width:"10%"}}/> */}
@@ -25,4 +25,4 @@ const Headers = () => (
   </Menu>
 );
 
-export default Headers;
+export default Navigation;
