@@ -8,8 +8,8 @@ import LoadEventCollections from './services/collections/LoadEventCollections';
 
 // ==== COMPONENTS ====
 import Cards from './components/Cards';
-
-
+import Header from './components/Partials/Header';
+import Footer from './components/Partials/Footer';
 // ==== OTHER ====
 const {Search} = Input;
 
@@ -42,6 +42,7 @@ export default function App() {
 
   return (
     <div>
+      <Header/>
       <h1>Bookkeeper</h1>
       <SliderComponent />
       <Button onClick={alertTest} text="Click me" />
@@ -70,6 +71,7 @@ export default function App() {
           </Row>
         </Col>
       </Row>
+      <Footer/>
     </div>
   );
 }
