@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Row, Col} from 'antd';
 import {Link} from 'react-router-dom';
 
@@ -7,9 +7,9 @@ const footerOptions = {
     backgroundColor:"#001529"
 }
 
-const Footer = ()=>{
+const Footer : FC = ()=>{
  return(
-    <Col  style={footerOptions}>
+    <Col style={footerOptions}>
         <Row justify="center">
             <Col span={24} type="flex" align="middle" style={{marginTop:"3%"}}>
                 <Link to={"/"}>Contact</Link>
