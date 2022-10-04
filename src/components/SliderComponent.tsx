@@ -1,30 +1,22 @@
-import { Carousel } from 'antd';
+import { Carousel, Col } from 'antd';
 import 'antd/dist/antd.min.css';
 import React from 'react';
 
-const contentStyle: React.CSSProperties = {
-  height: '160px',
-  color: '#fff',
-  lineHeight: '160px',
-  textAlign: 'center',
-  background: '#364d79',
+// ==== COMPONENTS ====
+
+// ==== OTHER ====
+
+const SliderComponent = (props) => {
+  return (
+    <Carousel style={{height: "20%", border: "1px solid black"}} autoplay>
+      {props.dataResult.length != 0 ?  props.dataResult.data.object.map((elm,index)=>(
+        <div key={index}>
+          <img style={{width:"100%", height:"400px"}} src={elm.url} alt="image name"/>
+        </div>
+      )) : null}
+    </Carousel>
+  )
 };
 
-const SliderComponent: React.FC = () => (
-  <Carousel autoplay>
-    <div>
-      <h3 style={contentStyle}>1</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>2</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>3</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>4</h3>
-    </div>
-  </Carousel>
-);
-
 export default SliderComponent;
+

@@ -3,14 +3,16 @@ import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import SliderComponent from './components/SliderComponent';
 import Button from './components/Button';
-import {Col, Row, Input} from 'antd';
-import LoadEventCollections from './services/collections/LoadEventCollections';
+import {Col, Row, Input, Affix, Carousel} from 'antd';
 
 // ==== COMPONENTS ====
 import Cards from './components/Cards';
-
-
+import Navigation from './components/Partials/Navigation';
+import Footer from './components/Partials/Footer';
 // ==== OTHER ====
+import LoadEventCollections from './services/collections/LoadEventCollections';
+import LoadPropertyCollection from './services/collections/LoadPropertyCollections'
+
 const {Search} = Input;
 
 
@@ -20,56 +22,51 @@ const alertTest = () => {
 
 
 export default function App() {
-  const [searchEvents, setSearchedEvents] = useState([]);
   const [initialData, setInitialData] = useState([]);
+  const [sliderImages, setSliderImages] = useState([])
+  const [top, setTop] = useState(2);
 
   useEffect(() => {
 
     async function loadData() {
       setInitialData(await LoadEventCollections.getAllEvents());
-    }
+      setSliderImages(await LoadPropertyCollection.getSliderImages());
 
+    }
     loadData()
 
   }, [])
 
-
-  const onSearch = async (value: any) =>{
-    // setInitialData([]);
+  const onSearch = async (value) =>{
     setInitialData(await LoadEventCollections.searchEvent(value));
   } 
 
-
   return (
     <div>
-      <h1>Bookkeeper</h1>
-      <SliderComponent />
-      <Button onClick={alertTest} text="Click me" />
-      <div style={{border: '1px solid black'}}>
-        <p>Dette er et event
-          <Link to="/eventdetails">Dette er et link til et event</Link>
-        </p>
-      </div>
-      <div style={{border: '1px solid black'}}>
-        <p>Dette er et event
-          <Link to="/eventdetails2">Dette er et link til et event 2</Link>
-        </p>
-      </div>
+      <Affix>
+      <Navigation/>
+      </Affix>
+      <Col type="flex" align="middle" style={{marginTop:"2%", marginBottom:"2%"}}>
+        <h1>Event Planner</h1>
+      </Col>
+      {/* === SLIDER CAROUSEL === */}
+      <SliderComponent dataResult={sliderImages} />
+        
       <Row justify="center">
         <Col span={16} style={{marginTop: "5%"}}>
+          {/* === SEARCH === */}
           <Search placeholder="input search text" onSearch={onSearch} enterButton />
+          {/* === CARDS === */}
           <Row>
-
               {initialData.map((elm, index) => (
-                // <div key={index}>
-                  <Cards data={elm} debug={false}/>
-                // </div>
+                  <Cards data={elm} key={index} debug={false}/>
               ))
             }
 
           </Row>
         </Col>
       </Row>
+      <Footer/>
     </div>
   );
 }

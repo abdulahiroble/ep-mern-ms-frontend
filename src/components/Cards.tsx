@@ -5,7 +5,7 @@ const {Meta} = Card;
 
 const Cards = ({data, debug}) => {
   if(debug) console.log(data.data);
-  console.log(debug)
+  
   return (
     <a href={data.url}   
     style={{
