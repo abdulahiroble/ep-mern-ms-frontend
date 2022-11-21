@@ -19,8 +19,8 @@ class LoadEventCollections {
     getAllEvents = async () => {
         const result = await axios.get(`${url}/api/allEvents`);
 
-        console.log(result.data.page.totalPages)
-        console.log(result.data._embedded.events)
+        console.log(result.data.page.number)
+        console.log(result.data)
 
         return result
     }

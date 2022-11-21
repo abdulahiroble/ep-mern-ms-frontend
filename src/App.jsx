@@ -69,7 +69,7 @@ export default function App() {
           {/* {initialData.data?.page.map((elm, index) => (
             ))
           } */}
-          <Paginate defaultCurrent={defaultCurrent} total={initialData.data.page.totalPages} />
+          <Paginate current={initialData.data?.page.number} total={initialData.data?.page.totalPages} onPageChange={page => setDefaultCurrent(page)} />
         </Col>
         {/* <div className="container">
           <Pagination currentPage={currentPage} total={500} limit={20} onPageChange={page => setCurrentPage(page)} />

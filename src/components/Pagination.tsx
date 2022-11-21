@@ -3,18 +3,18 @@ import React from 'react'
 // import "../Styles/Pagination.css"
 import {Pagination} from 'antd';
 
-const range = (start, end) => {
-    return [...Array(end).keys()].map(el => el + start)
-}
+// const range = (start, end) => {
+//     return [...Array(end).keys()].map(el => el + start)
+// }
 
-const Paginate = ({defaultCurrent, total, limit, onPageChange}) => {
-    const pagesCount = Math.ceil(total / limit)
+const Paginate = ({current, total, limit, onPageChange}) => {
+    // const pagesCount = Math.ceil(total / limit)
     // const pages = range(1, pagesCount)
     // console.log(pagesCount, pages)
 
     return (
         <>
-            <Pagination defaultCurrent={1} total={total} />;
+            <Pagination current={current} total={total} />;
         </>
     )
 }
