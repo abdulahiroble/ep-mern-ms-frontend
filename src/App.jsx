@@ -43,6 +43,11 @@ export default function App() {
     setInitialData(await LoadEventCollections.searchEvent(value));
   }
 
+  const onChange: PaginationProps['onChange'] = (pageNumber) => {
+    console.log('Page: ', pageNumber);
+  };
+
+
   return (
     <div>
       <Affix>
@@ -69,7 +74,7 @@ export default function App() {
           {/* {initialData.data?.page.map((elm, index) => (
             ))
           } */}
-          <Paginate defaultCurrent={current} total={initialData.data?.page.totalPages} />
+          <Paginate current={current} total={initialData.data?.page.totalPages} onChange={onChange => setCurrent(onChange)} />
         </Col>
         {/* <div className="container">
           <Pagination currentPage={currentPage} total={500} limit={20} onPageChange={page => setCurrentPage(page)} />
