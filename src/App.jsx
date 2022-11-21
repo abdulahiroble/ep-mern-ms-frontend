@@ -25,7 +25,7 @@ const alertTest = () => {
 export default function App() {
   const [initialData, setInitialData] = useState([]);
   const [sliderImages, setSliderImages] = useState([])
-  const [defaultCurrent, setDefaultCurrent] = useState(1);
+  const [current, setCurrent] = useState(1);
 
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export default function App() {
           {/* {initialData.data?.page.map((elm, index) => (
             ))
           } */}
-          <Paginate current={initialData.data?.page.number} total={initialData.data?.page.totalPages} onPageChange={page => setDefaultCurrent(page)} />
+          <Paginate defaultCurrent={current} total={initialData.data?.page.totalPages} />
         </Col>
         {/* <div className="container">
           <Pagination currentPage={currentPage} total={500} limit={20} onPageChange={page => setCurrentPage(page)} />

@@ -7,14 +7,14 @@ import {Pagination} from 'antd';
 //     return [...Array(end).keys()].map(el => el + start)
 // }
 
-const Paginate = ({current, total, limit, onPageChange}) => {
+const Paginate = ({defaultCurrent, total, limit, onPageChange}) => {
     // const pagesCount = Math.ceil(total / limit)
     // const pages = range(1, pagesCount)
     // console.log(pagesCount, pages)
 
     return (
         <>
-            <Pagination current={current} total={total} />;
+            <Pagination defaultCurrent={defaultCurrent} total={total} />;
         </>
     )
 }
