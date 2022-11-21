@@ -13,13 +13,16 @@ class LoadEventCollections {
         const result = await axios.post(`${url}/api/searchEvents`, data);
 
         // console.log(await result.data);
-        return result.data._embedded.events;
+        return result.data._embedded
     }
 
     getAllEvents = async () => {
         const result = await axios.get(`${url}/api/allEvents`);
-        
-        return result.data._embedded.events;
+
+        console.log(result.data.page.totalPages)
+        console.log(result.data._embedded.events)
+
+        return result
     }
 }
 

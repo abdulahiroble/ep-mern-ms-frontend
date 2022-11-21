@@ -12,7 +12,7 @@ import Footer from './components/Partials/Footer';
 // ==== OTHER ====
 import LoadEventCollections from './services/collections/LoadEventCollections';
 import LoadPropertyCollection from './services/collections/LoadPropertyCollections'
-import Pagination from './components/Pagination';
+import Paginate from './components/Pagination';
 
 const {Search} = Input;
 
@@ -25,8 +25,8 @@ const alertTest = () => {
 export default function App() {
   const [initialData, setInitialData] = useState([]);
   const [sliderImages, setSliderImages] = useState([])
-  const [currentPage, setCurrentPage] = useState(1);
-  const [top, setTop] = useState(2);
+  const [defaultCurrent, setDefaultCurrent] = useState(1);
+
 
   useEffect(() => {
 
@@ -60,17 +60,21 @@ export default function App() {
           <Search placeholder="input search text" onSearch={onSearch} enterButton />
           {/* === CARDS === */}
           <Row>
-            {initialData.map((elm, index) => (
+            {initialData.data?._embedded.events.map((elm, index) => (
               <Cards data={elm} key={index} debug={false} />
             ))
             }
 
           </Row>
+          {/* {initialData.data?.page.map((elm, index) => (
+            ))
+          } */}
+          <Paginate defaultCurrent={defaultCurrent} total={initialData.data.page.totalPages} />
         </Col>
+        {/* <div className="container">
+          <Pagination currentPage={currentPage} total={500} limit={20} onPageChange={page => setCurrentPage(page)} />
+        </div> */}
       </Row>
-      <div className="container">
-        <Pagination currentPage={currentPage} total={500} limit={20} onPageChange={page => setCurrentPage(page)} />
-      </div>
       <Footer />
     </div>
   );
