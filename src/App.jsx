@@ -12,6 +12,7 @@ import Footer from './components/Partials/Footer';
 // ==== OTHER ====
 import LoadEventCollections from './services/collections/LoadEventCollections';
 import LoadPropertyCollection from './services/collections/LoadPropertyCollections'
+import Pagination from './components/Pagination';
 
 const {Search} = Input;
 
@@ -24,6 +25,7 @@ const alertTest = () => {
 export default function App() {
   const [initialData, setInitialData] = useState([]);
   const [sliderImages, setSliderImages] = useState([])
+  const [currentPage, setCurrentPage] = useState(1);
   const [top, setTop] = useState(2);
 
   useEffect(() => {
@@ -37,36 +39,39 @@ export default function App() {
 
   }, [])
 
-  const onSearch = async (value) =>{
+  const onSearch = async (value) => {
     setInitialData(await LoadEventCollections.searchEvent(value));
-  } 
+  }
 
   return (
     <div>
       <Affix>
-      <Navigation/>
+        <Navigation />
       </Affix>
-      <Col type="flex" align="middle" style={{marginTop:"2%", marginBottom:"2%"}}>
+      <Col type="flex" align="middle" style={{marginTop: "2%", marginBottom: "2%"}}>
         <h1>Event Planner</h1>
       </Col>
       {/* === SLIDER CAROUSEL === */}
       <SliderComponent dataResult={sliderImages} />
-        
+
       <Row justify="center">
         <Col span={16} style={{marginTop: "5%"}}>
           {/* === SEARCH === */}
           <Search placeholder="input search text" onSearch={onSearch} enterButton />
           {/* === CARDS === */}
           <Row>
-              {initialData.map((elm, index) => (
-                  <Cards data={elm} key={index} debug={false}/>
-              ))
+            {initialData.map((elm, index) => (
+              <Cards data={elm} key={index} debug={false} />
+            ))
             }
 
           </Row>
         </Col>
       </Row>
-      <Footer/>
+      <div className="container">
+        <Pagination currentPage={currentPage} total={500} limit={20} onPageChange={page => setCurrentPage(page)} />
+      </div>
+      <Footer />
     </div>
   );
 }
