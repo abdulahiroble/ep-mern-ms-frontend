@@ -43,10 +43,10 @@ export default function App() {
     setInitialData(await LoadEventCollections.searchEvent(value));
   }
 
-  const onChange: PaginationProps['onChange'] = (pageNumber) => {
-    console.log('Page: ', pageNumber);
-  };
-
+  const nextPage = async (value) => {
+    setInitialData(await LoadEventCollections.getNextEventPage(value));
+    setCurrent(value)
+  }
 
   return (
     <div>
@@ -69,16 +69,9 @@ export default function App() {
               <Cards data={elm} key={index} debug={false} />
             ))
             }
-
           </Row>
-          {/* {initialData.data?.page.map((elm, index) => (
-            ))
-          } */}
-          <Paginate current={current} total={initialData.data?.page.totalPages} onChange={onChange => setCurrent(onChange)} />
+          <Paginate current={current} total={initialData.data?.page.totalPages} onChange={onChange => nextPage(onChange)} />
         </Col>
-        {/* <div className="container">
-          <Pagination currentPage={currentPage} total={500} limit={20} onPageChange={page => setCurrentPage(page)} />
-        </div> */}
       </Row>
       <Footer />
     </div>
