@@ -8,15 +8,13 @@ import './index.css';
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(
-  <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
         </Route>
-        <Route path="eventdetails" element={<EventDetail />} />
+        <Route path="eventdetails/:id" element={<EventDetail />} />
         <Route path="eventdetails2" element={<EventDetail2 />} />
       </Routes>
-    </BrowserRouter>
-  </React.StrictMode>,
-  rootElement
+    </BrowserRouter>,
+    rootElement
 );
