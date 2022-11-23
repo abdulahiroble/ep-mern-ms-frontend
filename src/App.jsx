@@ -12,6 +12,7 @@ import Footer from './components/Partials/Footer';
 // ==== OTHER ====
 import LoadEventCollections from './services/collections/LoadEventCollections';
 import LoadPropertyCollection from './services/collections/LoadPropertyCollections'
+import Paginate from './components/Pagination';
 
 const {Search} = Input;
 
@@ -24,7 +25,8 @@ const alertTest = () => {
 export default function App() {
   const [initialData, setInitialData] = useState([]);
   const [sliderImages, setSliderImages] = useState([])
-  const [top, setTop] = useState(2);
+  const [current, setCurrent] = useState(1);
+
 
   useEffect(() => {
 
@@ -37,36 +39,41 @@ export default function App() {
 
   }, [])
 
-  const onSearch = async (value) =>{
+  const onSearch = async (value) => {
     setInitialData(await LoadEventCollections.searchEvent(value));
-  } 
+  }
+
+  const nextPage = async (value) => {
+    setInitialData(await LoadEventCollections.getNextEventPage(value));
+    setCurrent(value)
+  }
 
   return (
     <div>
       <Affix>
-      <Navigation/>
+        <Navigation />
       </Affix>
-      <Col type="flex" align="middle" style={{marginTop:"2%", marginBottom:"2%"}}>
+      <Col type="flex" align="middle" style={{marginTop: "2%", marginBottom: "2%"}}>
         <h1>Event Planner</h1>
       </Col>
       {/* === SLIDER CAROUSEL === */}
       <SliderComponent dataResult={sliderImages} />
-        
+
       <Row justify="center">
         <Col span={16} style={{marginTop: "5%"}}>
           {/* === SEARCH === */}
           <Search placeholder="input search text" onSearch={onSearch} enterButton />
           {/* === CARDS === */}
           <Row>
-              {initialData.map((elm, index) => (
-                  <Cards data={elm} key={index} debug={false}/>
-              ))
+            {initialData.data?._embedded.events.map((elm, index) => (
+              <Cards data={elm} key={index} debug={false} />
+            ))
             }
-
           </Row>
+          <Paginate current={current} total={initialData.data?.page.totalPages} onChange={onChange => nextPage(onChange)} />
         </Col>
       </Row>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -12,14 +12,24 @@ class LoadEventCollections {
         }
         const result = await axios.post(`${url}/api/searchEvents`, data);
 
-        // console.log(await result.data);
-        return result.data._embedded.events;
+        return result
+    }
+
+    getNextEventPage = async (input) => {
+        const data = {
+            'page': input
+        }
+        const result = await axios.post(`${url}/api/nextEventPage`, data);
+        return result
     }
 
     getAllEvents = async () => {
         const result = await axios.get(`${url}/api/allEvents`);
-        
-        return result.data._embedded.events;
+
+        console.log(result.data.page.number)
+        console.log(result.data)
+
+        return result
     }
 }
 
