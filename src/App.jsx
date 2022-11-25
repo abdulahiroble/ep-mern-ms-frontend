@@ -18,9 +18,9 @@ import Paginate from './components/Pagination';
 export default function App() {
   const [initialData, setInitialData] = useState([]);
   const [sliderImages, setSliderImages] = useState([])
+  const [current, setCurrent] = useState(1);
   const [top, setTop] = useState(2);
   const {Search} = Input;
-
   useEffect(() => {
 
     async function loadData() {
@@ -31,6 +31,11 @@ export default function App() {
     loadData()
 
   }, [])
+
+  const nextPage = async (value) => {
+    setInitialData(await LoadEventCollections.getNextEventPage(value));
+    setCurrent(value)
+  }
 
   console.log(initialData)
   const onSearch = async (value) =>{
