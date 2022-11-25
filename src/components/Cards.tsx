@@ -7,7 +7,7 @@ const Cards = ({data, debug}) => {
   if (debug) console.log(data.data);
 
   return (
-    <a href={data.url}
+    <a href={`/eventdetails/${data.id}`}
       style={{
         width: 240,
         margin: "2%"

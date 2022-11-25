@@ -1,33 +1,26 @@
 import * as React from 'react';
 import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import SliderComponent from './components/SliderComponent';
 import Button from './components/Button';
 import {Col, Row, Input, Affix, Carousel} from 'antd';
 
 // ==== COMPONENTS ====
 import Cards from './components/Cards';
 import Navigation from './components/Partials/Navigation';
+import SliderComponent from './components/SliderComponent';
 import Footer from './components/Partials/Footer';
 // ==== OTHER ====
 import LoadEventCollections from './services/collections/LoadEventCollections';
 import LoadPropertyCollection from './services/collections/LoadPropertyCollections'
 import Paginate from './components/Pagination';
 
-const {Search} = Input;
-
-
-const alertTest = () => {
-  alert("test")
-}
-
 
 export default function App() {
   const [initialData, setInitialData] = useState([]);
   const [sliderImages, setSliderImages] = useState([])
   const [current, setCurrent] = useState(1);
-
-
+  const [top, setTop] = useState(2);
+  const {Search} = Input;
   useEffect(() => {
 
     async function loadData() {
@@ -39,17 +32,24 @@ export default function App() {
 
   }, [])
 
-  const onSearch = async (value) => {
-    setInitialData(await LoadEventCollections.searchEvent(value));
-  }
-
   const nextPage = async (value) => {
     setInitialData(await LoadEventCollections.getNextEventPage(value));
     setCurrent(value)
   }
 
+  console.log(initialData)
+  const onSearch = async (value) =>{
+    if(value.length > 4){
+      alert("Postnummer skal være mindre end 4")
+    }else if(value.match(/^[0-9]+$/) == null){
+      alert("Skal indeholde tal")
+    }else{
+      setInitialData(await LoadEventCollections.searchEvent(value));
+    }
+  } 
+
   return (
-    <div>
+    <Col>
       <Affix>
         <Navigation />
       </Affix>
@@ -73,7 +73,7 @@ export default function App() {
           <Paginate current={current} total={initialData.data?.page.totalPages} onChange={onChange => nextPage(onChange)} />
         </Col>
       </Row>
-      <Footer />
-    </div>
+      <Footer/>
+    </Col>
   );
 }

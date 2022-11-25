@@ -31,6 +31,11 @@ class LoadEventCollections {
 
         return result
     }
+
+    fetchEvent = async (id) => {
+        const result = await axios.get(`${url}/api/fetchEvent/${id}`)
+        return result.data;
+    }
 }
 
 export default new LoadEventCollections();
