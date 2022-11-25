@@ -4,21 +4,21 @@ import React from 'react';
 const {Meta} = Card;
 
 const Cards = ({data, debug}) => {
-  if(debug) console.log(data.data);
-  
+  if (debug) console.log(data.data);
+
   return (
-    <a href={`/eventdetails/${data.id}`}   
-    style={{
-      width: 240,
-      margin: "2%"
-    }}>
-    <Card
-      hoverable
-      cover={<img alt="example" src={data.images[0].url} />}
-    >
-      <Meta title={data.name} />
-    </Card>
-  </a>
+    <a href={`/eventdetails/${data.id}`}
+      style={{
+        width: 240,
+        margin: "2%"
+      }}>
+      <Card
+        hoverable
+        cover={<img alt="example" src={data.images[0].url} />}
+      >
+        <Meta title={data.name} />
+      </Card>
+    </a>
   )
 };
 

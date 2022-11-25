@@ -12,6 +12,7 @@ import Footer from './components/Partials/Footer';
 // ==== OTHER ====
 import LoadEventCollections from './services/collections/LoadEventCollections';
 import LoadPropertyCollection from './services/collections/LoadPropertyCollections'
+import Paginate from './components/Pagination';
 
 
 export default function App() {
@@ -45,26 +46,26 @@ export default function App() {
   return (
     <Col>
       <Affix>
-      <Navigation/>
+        <Navigation />
       </Affix>
-      <Col type="flex" align="middle" style={{marginTop:"2%", marginBottom:"2%"}}>
+      <Col type="flex" align="middle" style={{marginTop: "2%", marginBottom: "2%"}}>
         <h1>Event Planner</h1>
       </Col>
       {/* === SLIDER CAROUSEL === */}
       <SliderComponent dataResult={sliderImages} />
-        
+
       <Row justify="center">
         <Col span={16} style={{marginTop: "5%"}}>
           {/* === SEARCH === */}
           <Search placeholder="input search text" onSearch={onSearch} enterButton />
           {/* === CARDS === */}
           <Row>
-              {initialData.map((elm, index) => (
-                  <Cards data={elm} key={index} debug={false}/>
-              ))
+            {initialData.data?._embedded.events.map((elm, index) => (
+              <Cards data={elm} key={index} debug={false} />
+            ))
             }
-
           </Row>
+          <Paginate current={current} total={initialData.data?.page.totalPages} onChange={onChange => nextPage(onChange)} />
         </Col>
       </Row>
       <Footer/>
