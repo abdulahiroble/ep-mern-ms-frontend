@@ -14,6 +14,14 @@ class LoadUserCollection {
         return result;
     }
 
+    getUserProfile = async (id) => {
+
+        const result = await axios.get(`${url}/api/users/${id}`)
+        console.log("RESULT=====", result)
+
+        return result;
+    }
+
 }
 
 export default new LoadUserCollection();
