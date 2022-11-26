@@ -5,6 +5,7 @@ import {
     Input,
     Select,
 } from 'antd';
+import LoadUserCollection from '../services/collections/LoadUserCollection';
 
 const {Option} = Select;
 
@@ -34,8 +35,9 @@ const tailFormItemLayout = {
 const RegistrationForm: React.FC = () => {
     const [form] = Form.useForm();
 
-    const onFinish = (values: any) => {
+    const onFinish = async (values: any) => {
         console.log('Received values of form: ', values);
+        await LoadUserCollection.registerUser(values)
     };
 
     const prefixSelector = (
@@ -55,160 +57,163 @@ const RegistrationForm: React.FC = () => {
     );
 
     return (
-        <Form
-            {...formItemLayout}
-            form={form}
-            name="register"
-            onFinish={onFinish}
-            initialValues={{
-                residence: ['zhejiang', 'hangzhou', 'xihu'],
-                prefix: '86',
-            }}
-            scrollToFirstError
-        >
-            <Form.Item
-                name="firstName"
-                label="First name"
-                rules={[
-                    {
-                        type: 'string',
-                        message: 'The input is not valid',
-                        min: 3,
-                        max: 50,
-                    },
-                    {
-                        required: true,
-                        message: 'Name must be at least 3 characters long',
-                    },
-                ]}
+        <>
+            <h1 style={{textAlign: "center"}}>Create an account!</h1>
+            <Form
+                {...formItemLayout}
+                form={form}
+                name="register"
+                onFinish={onFinish}
+                initialValues={{
+                    residence: ['zhejiang', 'hangzhou', 'xihu'],
+                    prefix: '86',
+                }}
+                scrollToFirstError
             >
-                <Input />
-            </Form.Item>
-
-            <Form.Item
-                name="lastName"
-                label="Last name"
-                rules={[
-                    {
-                        type: 'string',
-                        message: 'The input is not valid',
-                        min: 3,
-                        max: 50,
-                    },
-                    {
-                        required: true,
-                        message: 'Name must be at least 3 characters long',
-                    },
-                ]}
-            >
-                <Input />
-            </Form.Item>
-
-            <Form.Item
-                name="email"
-                label="E-mail"
-                rules={[
-                    {
-                        type: 'email',
-                        message: 'The input is not valid E-mail!',
-                    },
-                    {
-                        required: true,
-                        message: 'Please input your E-mail!',
-                    },
-                ]}
-            >
-                <Input />
-            </Form.Item>
-
-            <Form.Item
-                name="address"
-                label="Address"
-                rules={[
-                    {
-                        type: 'string',
-                        message: 'The input is not valid',
-                        min: 3,
-                        max: 50,
-                    },
-                    {
-                        required: true,
-                        message: 'Name must be at least 3 characters long',
-                    },
-                ]}
-            >
-                <Input />
-            </Form.Item>
-
-            <Form.Item
-                name="postalCode"
-                label="Postal code"
-                rules={[
-                    {
-                        message: 'The input is not valid',
-                        min: 3,
-                        max: 4,
-                    },
-                    {
-                        required: true,
-                        message: 'Postal code must be at least 3 characters long',
-                    },
-                ]}
-            >
-                <Input />
-            </Form.Item>
-
-            <Form.Item
-                name="password"
-                label="Password"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please input your password!',
-                    },
-                ]}
-                hasFeedback
-            >
-                <Input.Password />
-            </Form.Item>
-
-            <Form.Item
-                name="confirm"
-                label="Confirm Password"
-                dependencies={['password']}
-                hasFeedback
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please confirm your password!',
-                    },
-                    ({getFieldValue}) => ({
-                        validator(_, value) {
-                            if (!value || getFieldValue('password') === value) {
-                                return Promise.resolve();
-                            }
-                            return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                <Form.Item
+                    name="firstname"
+                    label="First name"
+                    rules={[
+                        {
+                            type: 'string',
+                            message: 'The input is not valid',
+                            min: 3,
+                            max: 50,
                         },
-                    }),
-                ]}
-            >
-                <Input.Password />
-            </Form.Item>
+                        {
+                            required: true,
+                            message: 'Name must be at least 3 characters long',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
 
-            <Form.Item
-                name="phone"
-                label="Phone Number"
-                rules={[{required: true, message: 'Please input your phone number!'}]}
-            >
-                <Input addonBefore={prefixSelector} style={{width: '100%'}} />
-            </Form.Item>
+                <Form.Item
+                    name="lastname"
+                    label="Last name"
+                    rules={[
+                        {
+                            type: 'string',
+                            message: 'The input is not valid',
+                            min: 3,
+                            max: 50,
+                        },
+                        {
+                            required: true,
+                            message: 'Name must be at least 3 characters long',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
 
-            <Form.Item {...tailFormItemLayout}>
-                <Button type="primary" htmlType="submit">
-                    Register
-                </Button>
-            </Form.Item>
-        </Form>
+                <Form.Item
+                    name="email"
+                    label="E-mail"
+                    rules={[
+                        {
+                            type: 'email',
+                            message: 'The input is not valid E-mail!',
+                        },
+                        {
+                            required: true,
+                            message: 'Please input your E-mail!',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+
+                <Form.Item
+                    name="address"
+                    label="Address"
+                    rules={[
+                        {
+                            type: 'string',
+                            message: 'The input is not valid',
+                            min: 3,
+                            max: 50,
+                        },
+                        {
+                            required: true,
+                            message: 'Name must be at least 3 characters long',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+
+                <Form.Item
+                    name="postal"
+                    label="Postal code"
+                    rules={[
+                        {
+                            message: 'The input is not valid',
+                            min: 3,
+                            max: 4,
+                        },
+                        {
+                            required: true,
+                            message: 'Postal code must be at least 3 characters long',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+
+                <Form.Item
+                    name="password"
+                    label="Password"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please input your password!',
+                        },
+                    ]}
+                    hasFeedback
+                >
+                    <Input.Password />
+                </Form.Item>
+
+                <Form.Item
+                    name="confirm"
+                    label="Confirm Password"
+                    dependencies={['password']}
+                    hasFeedback
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please confirm your password!',
+                        },
+                        ({getFieldValue}) => ({
+                            validator(_, value) {
+                                if (!value || getFieldValue('password') === value) {
+                                    return Promise.resolve();
+                                }
+                                return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                            },
+                        }),
+                    ]}
+                >
+                    <Input.Password />
+                </Form.Item>
+
+                <Form.Item
+                    name="phone"
+                    label="Phone Number"
+                    rules={[{required: true, message: 'Please input your phone number!'}]}
+                >
+                    <Input addonBefore={prefixSelector} style={{width: '100%'}} />
+                </Form.Item>
+
+                <Form.Item {...tailFormItemLayout}>
+                    <Button type="primary" htmlType="submit">
+                        Register
+                    </Button>
+                </Form.Item>
+            </Form>
+        </>
     );
 };
 
