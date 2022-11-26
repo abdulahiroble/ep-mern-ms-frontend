@@ -19,14 +19,15 @@ const ProfileComponent = (props) => {
     const initialData = props.initialData.data.object;
 
     const onFinish = (values: any) => {
-        ApiContext.LoadUserCollection.authenticateUser(values)
-        console.log('Success:', values);
+        ApiContext.LoadUserCollection.updateProfile(values);
+        
       };
     
       const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
       };
       const initialValues = {
+        id : initialData._id,
         firstname : initialData.firstname,
         lastname : initialData.lastname,
         address : initialData.address,
@@ -45,6 +46,15 @@ const ProfileComponent = (props) => {
             onFinishFailed={onFinishFailed}
             autoComplete="off"
           >
+            <Form.Item
+              label="id"
+              name="id"
+              hidden={true}
+              rules={[{required: true, message: 'Please input your email!' }]}
+            >
+              <Input />
+            </Form.Item>
+
             <Form.Item
               label="First Name"
               name="firstname"

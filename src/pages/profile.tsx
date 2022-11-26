@@ -34,8 +34,14 @@ export default function EventDetails() {
             <Navigation/>
           </Affix>
             <Col className='Logincontainer' span={24}>
-              {initialData.length !== 0 ? <ProfileComponent initialData={initialData}/> : null}
-              {/* <ProfileComponent initialData={initialData}/>  */}
+              {/* {initialData.length !== 0 ? <ProfileComponent initialData={initialData}/> : null} */}
+
+
+
+
+              <ProfileComponent initialData={initialData}/> 
+
+              
             </Col>
           <Footer/>
         </Col>
