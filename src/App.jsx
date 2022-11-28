@@ -13,6 +13,7 @@ import Footer from './components/Partials/Footer';
 import LoadEventCollections from './services/collections/LoadEventCollections';
 import LoadPropertyCollection from './services/collections/LoadPropertyCollections'
 import Paginate from './components/Pagination';
+import Category from './components/Category';
 
 
 export default function App() {
@@ -38,15 +39,15 @@ export default function App() {
   }
 
   console.log(initialData)
-  const onSearch = async (value) =>{
-    if(value.length > 4){
+  const onSearch = async (value) => {
+    if (value.length > 4) {
       alert("Postnummer skal være mindre end 4")
-    }else if(value.match(/^[0-9]+$/) == null){
+    } else if (value.match(/^[0-9]+$/) == null) {
       alert("Skal indeholde tal")
-    }else{
+    } else {
       setInitialData(await LoadEventCollections.searchEvent(value));
     }
-  } 
+  }
 
   return (
     <Col>
@@ -64,6 +65,7 @@ export default function App() {
           {/* === SEARCH === */}
           <Search placeholder="input search text" onSearch={onSearch} enterButton />
           {/* === CARDS === */}
+          <Category />
           <Row>
             {initialData.data?._embedded.events.map((elm, index) => (
               <Cards data={elm} key={index} debug={false} />
@@ -73,7 +75,7 @@ export default function App() {
           <Paginate current={current} total={initialData.data?.page.totalPages} onChange={onChange => nextPage(onChange)} />
         </Col>
       </Row>
-      <Footer/>
+      <Footer />
     </Col>
   );
 }
