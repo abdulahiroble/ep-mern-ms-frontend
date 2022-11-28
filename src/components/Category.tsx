@@ -24,7 +24,8 @@ const data = [
     },
 ];
 
-const Category = () => {
+const Category = ({category}) => {
+    // console.log(category)
     return (
         <List
             grid={{

@@ -28,8 +28,11 @@ export default function App() {
       setInitialData(await LoadEventCollections.getAllEvents());
       setSliderImages(await LoadPropertyCollection.getSliderImages());
 
+      await LoadEventCollections.getEventsByCategory("KZFzniwnSyZfZ7v7nJ")
     }
     loadData()
+
+
 
   }, [])
 
@@ -65,7 +68,12 @@ export default function App() {
           {/* === SEARCH === */}
           <Search placeholder="input search text" onSearch={onSearch} enterButton />
           {/* === CARDS === */}
-          <Category />
+          {/* {initialData.data?._embedded.events.map((elm, index) => (
+            <Category data={elm.classifications[0].segment.id} />
+            // <Cards data={elm} key={index} debug={false} />
+            ))
+            } */}
+          <Category category />
           <Row>
             {initialData.data?._embedded.events.map((elm, index) => (
               <Cards data={elm} key={index} debug={false} />

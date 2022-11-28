@@ -26,9 +26,19 @@ class LoadEventCollections {
     getAllEvents = async () => {
         const result = await axios.get(`${url}/api/allEvents`);
 
-        console.log(result.data.page.number)
-        console.log(result.data)
+        // console.log(result.data._embedded.events.map((elm) => elm.classifications.map((elm) => elm.segment.id)))
 
+        // console.log(result.data._embedded.events.map((elm) => elm.classifications[0].segment.id))
+
+        return result
+    }
+
+    getEventsByCategory = async (input) => {
+        const data = {
+            'category': input
+        }
+        const result = await axios.post(`${url}/api/eventsByCategory`, data);
+        console.log(result)
         return result
     }
 
