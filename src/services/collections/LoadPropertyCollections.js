@@ -8,9 +8,9 @@ if (process.env.Node_env !== 'production') {
 
 
 class LoadPropertyCollection {
-    getSliderImages = async ()=>{
+    getSliderImages = async () => {
         const result = await axios.get(`${url}/api/getAll/sliderImage`)
-        console.log("RESULT=====",result)
+        // console.log("RESULT=====",result)
         return result;
     }
 

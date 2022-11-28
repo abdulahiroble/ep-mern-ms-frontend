@@ -28,12 +28,15 @@ export default function App() {
       setInitialData(await LoadEventCollections.getAllEvents());
       setSliderImages(await LoadPropertyCollection.getSliderImages());
 
-      await LoadEventCollections.getEventsByCategory("KZFzniwnSyZfZ7v7nJ")
+      await LoadEventCollections.getEventsByCategory("KZFzniwnSyZfZ7v7na")
+
+      // initialData.result?.data._embedded.events.map(async (elm) => {
+      //   await LoadEventCollections.getEventsByCategory(elm.classifications[0].segment.id)
+      // })
+
     }
+
     loadData()
-
-
-
   }, [])
 
   const nextPage = async (value) => {
@@ -41,7 +44,6 @@ export default function App() {
     setCurrent(value)
   }
 
-  console.log(initialData)
   const onSearch = async (value) => {
     if (value.length > 4) {
       alert("Postnummer skal være mindre end 4")

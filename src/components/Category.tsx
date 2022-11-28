@@ -12,16 +12,7 @@ const data = [
     },
     {
         title: 'Title 3',
-    },
-    {
-        title: 'Title 4',
-    },
-    {
-        title: 'Title 5',
-    },
-    {
-        title: 'Title 6',
-    },
+    }
 ];
 
 const Category = ({category}) => {

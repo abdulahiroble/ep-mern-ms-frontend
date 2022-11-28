@@ -30,6 +30,13 @@ class LoadEventCollections {
 
         // console.log(result.data._embedded.events.map((elm) => elm.classifications[0].segment.id))
 
+
+        const duplicate = result.data._embedded.events.map((elm) => elm.classifications[0].segment.id)
+
+        let uniqueItems = [...new Set(duplicate)]
+
+        console.log(uniqueItems)
+
         return result
     }
 
