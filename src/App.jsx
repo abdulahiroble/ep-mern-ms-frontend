@@ -19,21 +19,23 @@ import Category from './components/Category';
 export default function App() {
   const [initialData, setInitialData] = useState([]);
   const [sliderImages, setSliderImages] = useState([])
+  const [musicCategory, setMusicCategory] = useState([]);
+  const [artsCategory, setArtsCategory] = useState([]);
+  const [miscellaneous, setMiscellaneous] = useState([]);
   const [current, setCurrent] = useState(1);
-  const [top, setTop] = useState(2);
   const {Search} = Input;
+
   useEffect(() => {
 
     async function loadData() {
       setInitialData(await LoadEventCollections.getAllEvents());
       setSliderImages(await LoadPropertyCollection.getSliderImages());
 
-      await LoadEventCollections.getEventsByCategory("KZFzniwnSyZfZ7v7na")
+      const array = await LoadEventCollections.getAllEventsCategoryById();
 
-      // initialData.result?.data._embedded.events.map(async (elm) => {
-      //   await LoadEventCollections.getEventsByCategory(elm.classifications[0].segment.id)
-      // })
-
+      setMusicCategory(await LoadEventCollections.getEventsByCategory(array[0]))
+      setArtsCategory(await LoadEventCollections.getEventsByCategory(array[1]))
+      setMiscellaneous(await LoadEventCollections.getEventsByCategory(array[2]))
     }
 
     loadData()
@@ -70,12 +72,7 @@ export default function App() {
           {/* === SEARCH === */}
           <Search placeholder="input search text" onSearch={onSearch} enterButton />
           {/* === CARDS === */}
-          {/* {initialData.data?._embedded.events.map((elm, index) => (
-            <Category data={elm.classifications[0].segment.id} />
-            // <Cards data={elm} key={index} debug={false} />
-            ))
-            } */}
-          <Category category />
+          <Category musicCategory={musicCategory} artsCategory={artsCategory} miscellaneous={miscellaneous} />
           <Row>
             {initialData.data?._embedded.events.map((elm, index) => (
               <Cards data={elm} key={index} debug={false} />

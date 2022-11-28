@@ -26,10 +26,11 @@ class LoadEventCollections {
     getAllEvents = async () => {
         const result = await axios.get(`${url}/api/allEvents`);
 
-        // console.log(result.data._embedded.events.map((elm) => elm.classifications.map((elm) => elm.segment.id)))
+        return result
+    }
 
-        // console.log(result.data._embedded.events.map((elm) => elm.classifications[0].segment.id))
-
+    getAllEventsCategoryById = async () => {
+        const result = await axios.get(`${url}/api/allEvents`);
 
         const duplicate = result.data._embedded.events.map((elm) => elm.classifications[0].segment.id)
 
@@ -37,15 +38,15 @@ class LoadEventCollections {
 
         console.log(uniqueItems)
 
-        return result
+        return uniqueItems
     }
 
     getEventsByCategory = async (input) => {
+
         const data = {
             'category': input
         }
         const result = await axios.post(`${url}/api/eventsByCategory`, data);
-        console.log(result)
         return result
     }
 
