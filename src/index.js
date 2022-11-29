@@ -11,6 +11,8 @@ import { history } from './helpers/history';
 //pages
 import EventDetail from './pages/EventDetails'
 import EventDetail2 from './pages/EventDetails2'
+import Profile from './pages/profile'
+import './index.css';
 import Login from './pages/Login';
 
 
@@ -28,10 +30,12 @@ ReactDOM.render(
         <Route path='login' element={<Login/>}/>
         <Route path="eventdetails/:id" element={<EventDetail />} />
         <Route path="eventdetails2" element={<EventDetail2 />} />
+        <Route path="profile/:id" element={<Profile />} />
         <Navigate to='/'/>
       </Routes>
     </BrowserRouter>,
     rootElement
+    //test
 );
 
 export default Routes;
