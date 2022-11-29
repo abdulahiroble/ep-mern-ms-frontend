@@ -2,7 +2,7 @@ import  React from 'react';
 import App from './App';
 import './index.css';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route, Redirect, Switch} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import RouteGuard from './components/RouteGuard';
 
 //history
@@ -19,18 +19,16 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes history={history}>
         <Route path="/" element={<App />}>
-          <Switch>
             <RouteGuard
               exact
               path='/'
               component={EventDetail2}
             />
-            <Route path='login' element={<Login/>}/>
-          </Switch>
         </Route>
+        <Route path='login' element={<Login/>}/>
         <Route path="eventdetails/:id" element={<EventDetail />} />
         <Route path="eventdetails2" element={<EventDetail2 />} />
-        <Redirect to ='/'/>
+        <Navigate to='/'/>
       </Routes>
     </BrowserRouter>,
     rootElement

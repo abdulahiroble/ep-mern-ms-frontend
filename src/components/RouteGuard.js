@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Redirect } from 'react-router-dom';
+import { Navigate, Route} from 'react-router-dom';
 
 const RouteGuard = ({ component, ...rest}) => {
 
@@ -20,7 +20,7 @@ const RouteGuard = ({ component, ...rest}) => {
 
             :
 
-            <Redirect to = {{ pathname: '/login' }} />
+            <Navigate to = {{ pathname: '/login' }} />
         )}
         />
     );
