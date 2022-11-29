@@ -7,10 +7,8 @@ if (process.env.Node_env !== 'production') {
 
 class LoadUserCollection {
     authenticateUser = async (data) => {
-
         const result = await axios.post(`${url}/api/login`, data)
         console.log("RESULT=====", result)
-
         return result;
     }
 
