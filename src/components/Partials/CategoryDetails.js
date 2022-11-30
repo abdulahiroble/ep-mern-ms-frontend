@@ -34,14 +34,6 @@ const CategoryDetails = () => {
     loadData()
   }, [])
 
-  console.log("initData===", initialData.data?.name)
-  console.log("initData===", initialData.data)
-
-  // const nextPage = async (value) => {
-  //   setInitialData(await LoadEventCollections.getNextEventPage(value));
-  //   setCurrent(value)
-  // }
-
   const onSearch = async (value) => {
     if (value.length > 4) {
       alert("Postnummer skal være mindre end 4")
@@ -49,6 +41,16 @@ const CategoryDetails = () => {
       alert("Skal indeholde tal")
     } else {
       setInitialData(await LoadEventCollections.searchEvent(value));
+    }
+  }
+
+  const categoryImage = () => {
+    if (params.id === "KZFzniwnSyZfZ7v7nJ") {
+      return "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+    } else if (params.id === "KZFzniwnSyZfZ7v7n1") {
+      return "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+    } else {
+      return "https://images.unsplash.com/photo-1572953109213-3be62398eb95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
     }
   }
 
@@ -68,12 +70,11 @@ const CategoryDetails = () => {
           <Search placeholder="input search text" onSearch={onSearch} enterButton />
           {/* === CARDS === */}
           <Row>
-            {/* {initialData.data?._embedded.events.map((elm, index) => (
-              <Cards data={elm} key={index} debug={false} />
+            {initialData.data?._embedded.genres.map((elm, index) => (
+              <Cards name={elm.name} imgUrl={categoryImage()} key={index} debug={false} />
             ))
-            } */}
+            }
           </Row>
-          {/* <Paginate current={current} total={initialData.data?.page.totalPages} onChange={onChange => nextPage(onChange)} /> */}
         </Col>
       </Row>
       <Footer />
