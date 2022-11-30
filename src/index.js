@@ -9,6 +9,7 @@ import {ProtectedRoute} from './services/MiddleWare/ProtectedRoute';
 //pages
 import EventDetail from './pages/EventDetails'
 import EventDetail2 from './pages/EventDetails2'
+import ContactForm from './pages/ContactForm'
 import Profile from './pages/profile'
 import './index.css';
 import Login from './pages/Login';
@@ -34,6 +35,7 @@ ReactDOM.render(
       <Route path='/' element={<App />} />
       <Route path="eventdetails/:id" element={<EventDetail />} />
       <Route path="eventdetails3" element={<EventDetail2 />} />
+      <Route path="contact" element={<ContactForm />} />
       <Route path="profile/:id" element={<Profile />} />
       <Route path="/Registration" element={<Registration />} />
       <Route path="categoryDetails/:id" element={<CategoryDetails />} />

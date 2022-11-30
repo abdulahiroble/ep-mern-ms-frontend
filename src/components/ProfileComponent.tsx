@@ -22,18 +22,15 @@ const ProfileComponent = (props) => {
         ApiContext.LoadUserCollection.updateProfile(values);
         
       };
-    
-      const onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo);
-      };
+  
       const initialValues = {
-        id : initialData._id,
-        firstname : initialData.firstname,
-        lastname : initialData.lastname,
-        address : initialData.address,
-        postal : initialData.postal,
-        number : initialData.number,
-        email : initialData.email
+        id : initialData?._id,
+        firstname : initialData?.firstname,
+        lastname : initialData?.lastname,
+        address : initialData?.address,
+        postal : initialData?.postal,
+        number : initialData?.number,
+        email : initialData?.email
       }
     return(
             <Form
@@ -43,7 +40,6 @@ const ProfileComponent = (props) => {
             wrapperCol={{ span: 24 }}
             initialValues={initialValues}
             onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
             autoComplete="off"
           >
             <Form.Item

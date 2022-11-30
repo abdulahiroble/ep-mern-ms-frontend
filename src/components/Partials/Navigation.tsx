@@ -22,7 +22,9 @@ const Navigation = () => (
       </Menu.Item>
     </Link>
     <Menu.Item key="Kontakt" icon={<LoginOutlined />} style={styling}>
-      Kontakt
+      <Link to="/contact">
+        Kontakt
+      </Link>
     </Menu.Item>
     <Menu.Item key="Login" style={{marginLeft: "auto", paddingTop: "5px"}} icon={<ContactsOutlined />}>
       Login
