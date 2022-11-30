@@ -1,6 +1,7 @@
 // ====   MODULS ====
 import React from 'react';
 import { Affix, Col, Button, Checkbox, Form, Input } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import '../Styles/Login.css';
 
 // ==== COMPONENTS ====
@@ -11,21 +12,20 @@ import Footer from '../components/Partials/Footer';
 import LoadUserCollection from '../services/collections/LoadUserCollection';
 
 const App: React.FC = () => {
+  const navigate = useNavigate();
+
+
   const onFinish = async (values: any) => {
     const result = await LoadUserCollection.authenticateUser(values)
     let authenticated = false;
-    console.log('Success:', values);
+
     if(result.data.validPassword){
       authenticated = true;
       localStorage.setItem('token',result.data.generatedToken);
-      // console.log(localStorage.getItem('token'))
-
-    }
-      
-    // console.log('Success2:', result);
-    
-    
-
+      localStorage.setItem('userId',result.data.userId);
+      alert("Success")
+      navigate("/")
+    }      
   };
 
   const onFinishFailed = (errorInfo: any) => {

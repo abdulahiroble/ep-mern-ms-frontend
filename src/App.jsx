@@ -75,7 +75,7 @@ export default function App() {
           <Category musicCategory={musicCategory} artsCategory={artsCategory} miscellaneous={miscellaneous} />
           <Row>
             {initialData.data?._embedded.events.map((elm, index) => (
-              <Cards link={elm.id} imgUrl={elm.images[0].url} name={elm.name} key={index} debug={true} />
+              <Cards link={elm.id} imgUrl={elm.images[0].url} name={elm.name} key={index} debug={false} />
             ))
             }
           </Row>
