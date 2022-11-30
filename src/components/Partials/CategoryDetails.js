@@ -34,16 +34,6 @@ const CategoryDetails = () => {
     loadData()
   }, [])
 
-  const onSearch = async (value) => {
-    if (value.length > 4) {
-      alert("Postnummer skal være mindre end 4")
-    } else if (value.match(/^[0-9]+$/) == null) {
-      alert("Skal indeholde tal")
-    } else {
-      setInitialData(await LoadEventCollections.searchEvent(value));
-    }
-  }
-
   const categoryImage = () => {
     if (params.id === "KZFzniwnSyZfZ7v7nJ") {
       return "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
@@ -66,8 +56,6 @@ const CategoryDetails = () => {
       </Col>
       <Row justify="center">
         <Col span={16} style={{marginTop: "5%"}}>
-          {/* === SEARCH === */}
-          <Search placeholder="input search text" onSearch={onSearch} enterButton />
           {/* === CARDS === */}
           <Row>
             {initialData.data?._embedded.genres.map((elm, index) => (
