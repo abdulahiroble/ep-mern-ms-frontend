@@ -3,20 +3,20 @@ import {Link} from 'react-router-dom';
 import React from 'react';
 const {Meta} = Card;
 
-const Cards = ({data, debug}) => {
-  if (debug) console.log(data.data);
+const Cards = ({link, imgUrl, name, debug}) => {
+  if (debug) console.log(link, imgUrl, name);
 
   return (
-    <a href={`/eventdetails/${data.id}`}
+    <a href={`/eventdetails/${link}`}
       style={{
         width: 240,
         margin: "2%"
       }}>
       <Card
         hoverable
-        cover={<img alt="example" src={data.images[0].url} />}
+        cover={<img alt="example" src={imgUrl} />}
       >
-        <Meta title={data.name} />
+        <Meta title={name} />
       </Card>
     </a>
   )
