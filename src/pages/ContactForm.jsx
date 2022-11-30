@@ -8,24 +8,13 @@ import { Affix, Col, Button, Checkbox, Form, Input } from 'antd';
 // ==== COMPONENTS ====
 import Navigation from '../components/Partials/Navigation';
 import Footer from '../components/Partials/Footer';
-import ProfileComponent from '../components/ProfileComponent';
+import ContactFormComponent from '../components/ContactFormComponent';
 
 // ==== OTHERS ====
 import ApiContext from '../services/ApiContext';
 
 export default function EventDetails() {
   const [initialData, setInitialData] = useState([]);
-  const params = useParams();
-
-  useEffect(()=>{
-    async function loadData(){
-      setInitialData(await ApiContext.LoadUserCollection.getUserProfile(params.id));
-
-    }
-
-    loadData();
-
-  },[])
   
   console.log("INITIAL====",initialData)
     return(
@@ -34,14 +23,7 @@ export default function EventDetails() {
             <Navigation/>
           </Affix>
             <Col className='Logincontainer' span={24}>
-              {/* {initialData.length !== 0 ? <ProfileComponent initialData={initialData}/> : null} */}
-
-
-
-
-              <ProfileComponent initialData={initialData}/> 
-
-              
+              <ContactFormComponent initialData={initialData}/> 
             </Col>
           <Footer/>
         </Col>

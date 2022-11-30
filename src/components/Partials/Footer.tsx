@@ -11,12 +11,12 @@ const Footer : FC = ()=>{
  return(
     <Col style={footerOptions}>
         <Row justify="center">
-            <Col span={24} type="flex" align="middle" style={{marginTop:"3%"}}>
+            {/* <Col span={24} type="flex" align="middle" style={{marginTop:"3%"}}>
                 <Link to={"/"}>Contact</Link>
             </Col>
             <Col span={24} type="flex" align="middle">
                 <Link to={"/"}>FAQ</Link>
-            </Col>
+            </Col> */}
         </Row>
         
     </Col>
