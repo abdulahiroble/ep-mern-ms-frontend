@@ -15,7 +15,6 @@ const styling = {
 const Navigation = () => {
   const navigate = useNavigate();
   const isLoggedIn = AuthService.isLoggedIn();
-  console.log("NAV===",isLoggedIn)
 
   const logout = ()=>{
     localStorage.removeItem('token')
@@ -26,7 +25,6 @@ const Navigation = () => {
 
   return(
     <Menu mode="horizontal" defaultSelectedKeys={['mail']} theme="dark">
-    {/* <Link to="/"> */}
 
     <Menu.Item key="icon" className="modified-item" style={{width: "10%"}} icon={<img alt="logo" src="/logo.png" style={{width: "40%"}} />}>
     </Menu.Item>
