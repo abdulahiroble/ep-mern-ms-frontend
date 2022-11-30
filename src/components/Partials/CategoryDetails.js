@@ -19,9 +19,6 @@ import {useParams} from 'react-router-dom';
 const CategoryDetails = () => {
   const [initialData, setInitialData] = useState([]);
   const [sliderImages, setSliderImages] = useState([])
-  const [current, setCurrent] = useState(1);
-  const [category, setCategory] = useState([]);
-  const {Search} = Input;
   const params = useParams();
 
   useEffect(() => {
