@@ -29,7 +29,7 @@ const Navigation = () => (
     </Menu.Item>
     <Menu.Item key="Registrer" style={{paddingTop: "5px"}} icon={<UserAddOutlined />}>
       <Link to="/Registration">
-        Registrer
+        Register
       </Link>
     </Menu.Item>
   </Menu>

@@ -17,6 +17,7 @@ import Profile from './pages/profile'
 import './index.css';
 import Login from './pages/Login';
 
+import Registration from './pages/Registration';
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(
@@ -37,9 +38,10 @@ ReactDOM.render(
       <Route path="eventdetails/:id" element={<EventDetail />} />
       <Route path="eventdetails3" element={<EventDetail2 />} />
       <Route path="profile/:id" element={<Profile />} />
+      <Route path="/Registration" element={<Registration />} />
       {/* <Navigate to='/'/> */}
-    </Routes>
-  </BrowserRouter>,
+    </Routes >
+  </BrowserRouter >,
   rootElement
   //test
 );
