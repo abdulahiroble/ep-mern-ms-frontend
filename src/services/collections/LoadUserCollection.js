@@ -7,9 +7,26 @@ if (process.env.Node_env !== 'production') {
 
 class LoadUserCollection {
     authenticateUser = async (data) => {
+        data.key = process.env.REACT_APP_SECRET_KEY;
+        console.log(data)
         const result = await axios.post(`${url}/api/login`, data)
         console.log("RESULT=====", result)
         return result;
+    }
+
+    validateSignin = async (token) => {
+        const header = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-access-token': token
+            }
+        }
+        const result = await fetch(`${url}/api/login/verify`, header)
+        const data = await result.json();
+
+        // console.log("RESULT====",data)
+        return data;
     }
 
     getUserProfile = async (id) => {
