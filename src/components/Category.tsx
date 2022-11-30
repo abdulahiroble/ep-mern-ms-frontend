@@ -9,15 +9,18 @@ const Category = ({musicCategory, artsCategory, miscellaneous}) => {
     const data = [
         {
             title: musicCategory?.data?.name,
-            src: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+            src: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+            id: musicCategory?.data?.id
         },
         {
             title: artsCategory?.data?.name,
-            src: "https://images.unsplash.com/photo-1569783721854-33a99b4c0bae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1128&q=80"
+            src: "https://images.unsplash.com/photo-1569783721854-33a99b4c0bae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1128&q=80",
+            id: artsCategory?.data?.id
         },
         {
             title: miscellaneous?.data?.name,
-            src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
+            src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
+            id: miscellaneous?.data?.id
         }
     ];
 
@@ -35,12 +38,14 @@ const Category = ({musicCategory, artsCategory, miscellaneous}) => {
             dataSource={data}
             renderItem={(item) => (
                 <List.Item style={{marginTop: "40px"}}>
-                    <Card
-                        hoverable
-                        cover={<img alt="example" src={item.src} />}
-                    >
-                        <Meta title={item.title} />
-                    </Card>
+                    <a href={`/categoryDetails/${item.id}`}>
+                        <Card
+                            hoverable
+                            cover={<img alt="example" src={item.src} />}
+                        >
+                            <Meta title={item.title} />
+                        </Card>
+                    </a>
                 </List.Item>
             )}
         />

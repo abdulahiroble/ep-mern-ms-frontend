@@ -47,6 +47,7 @@ class LoadEventCollections {
             'category': input
         }
         const result = await axios.post(`${url}/api/eventsByCategory`, data);
+        // console.log(result)
         return result
     }
 
