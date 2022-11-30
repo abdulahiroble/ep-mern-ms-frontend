@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {
     Button,
+    Col,
     Form,
     Input,
     Select,
@@ -58,16 +59,13 @@ const RegistrationForm: React.FC = () => {
 
     return (
         <>
-            <h1 style={{textAlign: "center"}}>Create an account!</h1>
+            <Col className='Registercontainer'></Col>
             <Form
                 {...formItemLayout}
-                form={form}
                 name="register"
+                labelCol={{span: 8}}
+                wrapperCol={{span: 8}}
                 onFinish={onFinish}
-                initialValues={{
-                    residence: ['zhejiang', 'hangzhou', 'xihu'],
-                    prefix: '86',
-                }}
                 scrollToFirstError
             >
                 <Form.Item
