@@ -45,6 +45,14 @@ class LoadUserCollection {
         return result;
     }
 
+    registerUser = async (data) => {
+
+        const result = await axios.post(`${url}/api/users`, data)
+        console.log("RESULT=====", result)
+
+        return result;
+    }
+
 }
 
 export default new LoadUserCollection();
