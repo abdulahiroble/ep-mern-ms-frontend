@@ -7,6 +7,8 @@ if (process.env.Node_env !== 'production') {
 
 class LoadUserCollection {
     authenticateUser = async (data) => {
+        data.key = process.env.REACT_APP_SECRET_KEY;
+        console.log(data)
         const result = await axios.post(`${url}/api/login`, data)
         console.log("RESULT=====", result)
         return result;
