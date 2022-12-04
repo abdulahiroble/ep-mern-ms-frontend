@@ -36,8 +36,6 @@ class LoadEventCollections {
 
         let uniqueItems = [...new Set(duplicate)]
 
-        console.log(uniqueItems)
-
         return uniqueItems
     }
 
@@ -47,7 +45,6 @@ class LoadEventCollections {
             'category': input
         }
         const result = await axios.post(`${url}/api/eventsByCategory`, data);
-        // console.log(result)
         return result
     }
 

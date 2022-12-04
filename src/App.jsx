@@ -30,14 +30,16 @@ export default function App() {
     async function loadData() {
       setInitialData(await LoadEventCollections.getAllEvents());
       setSliderImages(await LoadPropertyCollection.getSliderImages());
+    }
 
+    const loadCategory = async () => {
       const array = await LoadEventCollections.getAllEventsCategoryById();
-
-      setMusicCategory(await LoadEventCollections.getEventsByCategory(array[0]))
+      setMusicCategory(await LoadEventCollections.getEventsByCategory(array[0]));
       setArtsCategory(await LoadEventCollections.getEventsByCategory(array[1]))
       setMiscellaneous(await LoadEventCollections.getEventsByCategory(array[2]))
     }
 
+    loadCategory()
     loadData()
   }, [])
 
