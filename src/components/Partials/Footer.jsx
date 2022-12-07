@@ -1,13 +1,13 @@
 import React, {FC} from 'react';
 import {Row, Col} from 'antd';
-import {Link} from 'react-router-dom';
+
 
 const footerOptions = {
     height:"250px",
     backgroundColor:"#001529"
 }
 
-const Footer : FC = ()=>{
+const Footer = ()=>{
  return(
     <Col style={footerOptions}>
         <Row justify="center">

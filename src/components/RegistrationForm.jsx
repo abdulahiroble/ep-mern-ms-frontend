@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
     Button,
     Col,
@@ -33,10 +33,10 @@ const tailFormItemLayout = {
     },
 };
 
-const RegistrationForm: React.FC = () => {
+const RegistrationForm = () => {
     const [form] = Form.useForm();
 
-    const onFinish = async (values: any) => {
+    const onFinish = async (values) => {
         console.log('Received values of form: ', values);
         await LoadUserCollection.registerUser(values)
     };

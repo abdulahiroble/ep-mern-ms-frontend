@@ -1,12 +1,8 @@
 // ====   MODULS ====
 import React from 'react';
-import { Affix, Col, Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 import {useNavigate} from 'react-router-dom';
-// import '../Styles/';
 
-// ==== COMPONENTS ====
-import Navigation from '../components/Partials/Navigation';
-import Footer from '../components/Partials/Footer';
 
 // ==== OTHERS ====
 import ApiContext from '../services/ApiContext';
@@ -15,7 +11,7 @@ const { TextArea } = Input;
 const ProfileComponent = () => {
     const navigate = useNavigate();
 
-    const onFinish = async (values: any) => {
+    const onFinish = async (values) => {
         const sendRequet = await ApiContext.LoadRequestCollection.sendRequest(values);
 
         if(sendRequet?.data?.success){

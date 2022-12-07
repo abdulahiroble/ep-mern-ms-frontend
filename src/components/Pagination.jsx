@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import {Pagination} from 'antd';
 
 const Paginate = ({current, total, onChange}) => {
     return (
         <>
-            <Pagination current={current} total={total} onChange={onChange} />;
+            <Pagination current={current} total={total} onChange={onChange} />
         </>
     )
 }
