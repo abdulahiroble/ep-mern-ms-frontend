@@ -21,14 +21,11 @@ export default function EventDetails() {
 
     async function loadData() {
       setInitialData(await ApiContext.LoadEventCollections.fetchEvent(params.id))
-
     }
     loadData()
 
   }, [])
 
-  console.log(useParams())
-  console.log("initData===",initialData)
     return(
         <main>
           <div>

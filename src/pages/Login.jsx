@@ -17,14 +17,17 @@ const App = () => {
 
   const onFinish = async (values) => {
     const result = await LoadUserCollection.authenticateUser(values)
-    let authenticated = false;
 
     if(result.data.validPassword){
-      authenticated = true;
       localStorage.setItem('token',result.data.generatedToken);
       localStorage.setItem('userId',result.data.userId);
       alert("Success")
       navigate("/")
+    // CHECK IF ERROR
+    }else if(result.data.errorCdoe != ""){
+      if(result.data.errorCode == "E101"){
+        alert("Wrong email or password")
+      }
     }      
   };
 
@@ -39,6 +42,7 @@ const App = () => {
       </Affix>
     <Col className='Logincontainer' span={24}>
     <Form
+      style={{textAlign: 'center'}}
       className='form'
       name="Login"
       labelCol={{ span: 24 }}
@@ -48,6 +52,9 @@ const App = () => {
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
+        <h1>Login</h1>
+
+
       <Form.Item
         label="Email"
         name="email"
@@ -64,13 +71,13 @@ const App = () => {
         <Input.Password />
       </Form.Item>
 
-      <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 0, span: 16 }}>
+      {/* <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 0, span: 16 }}>
         <Checkbox>Remember me</Checkbox>
-      </Form.Item>
+      </Form.Item> */}
 
-      <Form.Item wrapperCol={{ offset: 8, span: 24 }}>
-        <Button type="primary" htmlType="submit">
-          Submit
+      <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
+        <Button type="primary" htmlType="submit" style={{width:"100%"}}>
+          Log in
         </Button>
       </Form.Item>
     </Form>
