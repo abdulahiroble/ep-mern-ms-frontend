@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
-import Button from './components/Button';
-import {Col, Row, Input, Affix, Carousel} from 'antd';
+import {Col, Row, Input, Affix} from 'antd';
 
 // ==== COMPONENTS ====
 import Cards from './components/Cards';
