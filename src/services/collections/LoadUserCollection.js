@@ -11,6 +11,7 @@ class LoadUserCollection {
         console.log(data)
         const result = await axios.post(`${url}/api/login`, data)
         console.log("RESULT=====", result)
+        
         return result;
     }
 
