@@ -11,8 +11,13 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    yarn build
-  displayName: 'yarn build'
+    yarn add jest
+  displayName: 'adding jest libary'
+  
+- script: |
+    yarn test
+  displayName: 'yarn test'
+
   
 - task: CopyFilesOverSSH@0
   displayName: "Publish Pipeline Artifact"
