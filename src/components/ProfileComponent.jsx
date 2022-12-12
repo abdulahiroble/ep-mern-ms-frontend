@@ -1,24 +1,16 @@
 // ====   MODULS ====
 import React from 'react';
-import { Affix, Col, Button, Checkbox, Form, Input } from 'antd';
-// import '../Styles/';
-
-// ==== COMPONENTS ====
-import Navigation from '../components/Partials/Navigation';
-import Footer from '../components/Partials/Footer';
+import { Button, Form, Input } from 'antd';
 
 // ==== OTHERS ====
 import ApiContext from '../services/ApiContext';
-
-
-
 
 
 const ProfileComponent = (props) => {
     console.log("PROPS====",props.initialData.data.object)
     const initialData = props.initialData.data.object;
 
-    const onFinish = (values: any) => {
+    const onFinish = (values) => {
         ApiContext.LoadUserCollection.updateProfile(values);
         
       };

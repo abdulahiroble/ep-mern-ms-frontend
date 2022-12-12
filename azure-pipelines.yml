@@ -11,9 +11,18 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    yarn install
-  displayName: 'yarn install'
-
+    yarn add jest
+  displayName: 'adding jest libary'
+  
 - script: |
-    yarn build
-  displayName: 'yarn build'
+    yarn test
+  displayName: 'yarn test'
+
+  
+- task: CopyFilesOverSSH@0
+  displayName: "Publish Pipeline Artifact"
+  inputs:
+    sshEndpoint: 'EP-Server'
+    contents: '**'
+    targetFolder: '/app'
+    readyTimeout: '20000'

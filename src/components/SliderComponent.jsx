@@ -1,4 +1,4 @@
-import { Carousel, Col } from 'antd';
+import { Carousel} from 'antd';
 import 'antd/dist/antd.min.css';
 import React from 'react';
 

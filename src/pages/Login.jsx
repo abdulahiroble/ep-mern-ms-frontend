@@ -11,11 +11,11 @@ import Footer from '../components/Partials/Footer';
 // ==== OTHERS ====
 import LoadUserCollection from '../services/collections/LoadUserCollection';
 
-const App: React.FC = () => {
+const App = () => {
   const navigate = useNavigate();
 
 
-  const onFinish = async (values: any) => {
+  const onFinish = async (values) => {
     const result = await LoadUserCollection.authenticateUser(values)
 
     if(result.data.validPassword){
@@ -31,7 +31,7 @@ const App: React.FC = () => {
     }      
   };
 
-  const onFinishFailed = (errorInfo: any) => {
+  const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
 

@@ -2,8 +2,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
-import { Affix, Col, Button, Checkbox, Form, Input } from 'antd';
-// import '../Styles/Login.css';
+import { Affix, Col} from 'antd';
 
 // ==== COMPONENTS ====
 import Navigation from '../components/Partials/Navigation';
