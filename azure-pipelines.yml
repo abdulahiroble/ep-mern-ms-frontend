@@ -17,3 +17,11 @@ steps:
 - script: |
     yarn build
   displayName: 'yarn build'
+  
+- task: CopyFilesOverSSH@0
+  displayName: "Publish Pipeline Artifact"
+  inputs:
+    sshEndpoint: 'EP-Server'
+    contents: '**'
+    targetFolder: '/app'
+    readyTimeout: '20000'
