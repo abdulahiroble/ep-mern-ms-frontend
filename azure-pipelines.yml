@@ -19,6 +19,5 @@ steps:
     sshEndpoint: 'EP-Server'
     runOptions: 'commands'
     commands: |
-      cd app
-      sudo docker build . -t test
+      'ls -l'
     readyTimeout: '20000'
