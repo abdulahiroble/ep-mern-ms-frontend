@@ -19,5 +19,5 @@ steps:
     sshEndpoint: 'EP-Server'
     runOptions: 'inline'
     inline: 'sudo docker build . -t test'
-    interpreterCommand: '/app'
+    interpreterCommand: 'cd app'
     readyTimeout: '20000'
