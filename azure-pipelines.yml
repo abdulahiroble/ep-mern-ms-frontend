@@ -14,7 +14,11 @@ steps:
     targetFolder: '/app'
     readyTimeout: '20000'
 
-- task: CmdLine@2
+- task: SSH@0
   inputs:
-    script: 'sudo docker build . -t test'
-    workingDirectory: '$(Build.SourcesDirectory)/app'
+    sshEndpoint: 'EP-Server'
+    runOptions: 'commands'
+    commands: |
+      cd app
+      sudo docker build . -t test
+    readyTimeout: '20000'
