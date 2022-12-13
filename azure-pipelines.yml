@@ -17,4 +17,4 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'sudo docker build . -t test'
-    workingDirectory: './app'
+    workingDirectory: '~./app'
