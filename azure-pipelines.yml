@@ -16,8 +16,8 @@ steps:
 
 - task: SSH@0
   inputs:
-    sshEndpoint: 'EP-Server'
-    runOptions: 'commands'
-    commands: |
-      'ls -l'
+    runOptions: 'inline'
+    inline: 'sudo docker build . -t test'
+    interpreterCommand: '/app'
+    readyTimeout: '20000'
     readyTimeout: '20000'
