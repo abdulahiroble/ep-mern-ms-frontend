@@ -20,7 +20,7 @@
 #CMD [ "npx", "serve", "build" ]
 
 FROM tiangolo/node-frontend:12 as build-stage
-
+RUN npm install -g npm@latest
 WORKDIR /app
 COPY package*.json /app/
 RUN yarn install
