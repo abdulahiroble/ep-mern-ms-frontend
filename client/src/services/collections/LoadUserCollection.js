@@ -1,7 +1,7 @@
 import axios from "axios";
 
-let url;
-if (process.env.Node_env !== 'production') {
+let url = process.env.REACT_APP_PROD_URL;
+if (process.env.REACT_APP_ENVIRONMENT != 'prod') {
     url = process.env.REACT_APP_DEVELOPMENT_URL;
 }
 
