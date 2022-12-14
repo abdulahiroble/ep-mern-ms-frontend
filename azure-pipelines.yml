@@ -20,7 +20,7 @@ steps:
     runOptions: 'inline'
     inline: '
     ls -l;
-    cd ~app; 
+    cd ~/../app; 
     sudo docker build . -t test'
     readyTimeout: '20000'
     
