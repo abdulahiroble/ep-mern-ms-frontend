@@ -14,16 +14,16 @@ steps:
     targetFolder: '/app'
     readyTimeout: '20000'
 
-- task: SSH@0
-  inputs:
-    sshEndpoint: 'EP-Server'
-    runOptions: 'inline'
-    inline: '
-    ls -l;
-    cd ~/../app; 
-    docker build . -t my-react-app;
-    docker run -p 3000:3000 my-react-app;'
-    readyTimeout: '20000'
+#- task: SSH@0
+#  inputs:
+#    sshEndpoint: 'EP-Server'
+#    runOptions: 'inline'
+#    inline: '
+#    ls -l;
+#    cd ~/../app; 
+#    docker build . -t my-react-app;
+#    docker run -p 3000:3000 my-react-app;'
+#    readyTimeout: '20000'
     
   
 
