@@ -4,6 +4,7 @@ import Button from '../components/Button';
 // import {screen, configure} from '@testing-library/react'
 import '@testing-library/jest-dom'
 import RegistrationForm from '../components/RegistrationForm';
+import ProfileComponent from '../components/ProfileComponent';
 
 Object.defineProperty(window, 'matchMedia', {
     writable: true,
@@ -49,6 +50,36 @@ describe('Last Name', () => {
         expect(lastName.value.length).not.toBeGreaterThanOrEqual(52);
     });
 })
+
+describe('Address', () => {
+    it('Test whether a address has more than minimum 2 characters', () => {
+        render(<RegistrationForm />);
+        const lastName = screen.getByLabelText('Address');
+        fireEvent.change(lastName, {target: {value: 'Peter bangs vej 123'}});
+
+        // Valid partion test
+        expect(lastName.value.length).toBeGreaterThan(5);
+        // Invalid lower partion test
+        expect(lastName.value.length).not.toBeLessThan(2);
+        // Invalid upper partion test
+        expect(lastName.value.length).not.toBeGreaterThanOrEqual(52);
+    });
+})
+
+// describe('Contact', () => {
+//     it('Test whether a contact request message has more than minimum 1 characters', () => {
+//         render(<ProfileComponent />);
+//         const lastName = screen.getByLabelText('Text Message');
+//         fireEvent.change(lastName, {target: {value: 'Hej med dig'}});
+
+//         // Valid partion test
+//         expect(lastName.value.length).toBeGreaterThan(255);
+//         // Invalid lower partion test
+//         expect(lastName.value.length).not.toBeLessThan(-1);
+//         // Invalid upper partion test
+//         expect(lastName.value.length).not.toBeGreaterThanOrEqual(723);
+//     });
+// })
 
 describe('Button', () => {
     it('should render a button with the provided text', () => {
