@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, fireEvent, screen} from '@testing-library/react';
+import {render, fireEvent, screen, act} from '@testing-library/react';
 import Button from '../components/Button';
 // import {screen, configure} from '@testing-library/react'
 import '@testing-library/jest-dom'
@@ -7,7 +7,7 @@ import RegistrationForm from '../components/RegistrationForm';
 
 Object.defineProperty(window, 'matchMedia', {
     writable: true,
-    value: jest.fn().mockImplementation(query => ({
+    value: jest.fn().mockImplementation((query) => ({
         matches: false,
         media: query,
         onchange: null,
@@ -18,6 +18,37 @@ Object.defineProperty(window, 'matchMedia', {
         dispatchEvent: jest.fn(),
     })),
 });
+
+describe('First Name', () => {
+    it('Test whether first name has more than minimum 2 characters', () => {
+        render(<RegistrationForm />);
+        const firstName = screen.getByLabelText('First name');
+        fireEvent.change(firstName, {target: {value: 'abdulahi'}});
+
+        // Valid partion test
+        expect(firstName.value.length).toBeGreaterThan(5);
+        // Invalid lower partion test
+        expect(firstName.value.length).not.toBeLessThan(1);
+        // Invalid upper partion test
+        expect(firstName.value.length).not.toBeGreaterThanOrEqual(51);
+    });
+})
+
+
+describe('Last Name', () => {
+    it('Test whether a last name has more than minimum 3 characters', () => {
+        render(<RegistrationForm />);
+        const lastName = screen.getByLabelText('Last name');
+        fireEvent.change(lastName, {target: {value: 'mohamed'}});
+
+        // Valid partion test
+        expect(lastName.value.length).toBeGreaterThan(5);
+        // Invalid lower partion test
+        expect(lastName.value.length).not.toBeLessThan(2);
+        // Invalid upper partion test
+        expect(lastName.value.length).not.toBeGreaterThanOrEqual(52);
+    });
+})
 
 describe('Button', () => {
     it('should render a button with the provided text', () => {
@@ -33,15 +64,3 @@ describe('Button', () => {
         expect(onClick).toHaveBeenCalled();
     });
 });
-
-
-describe('First Name', () => {
-    // let cases = [[frank, true], [jasmine, false]]
-
-    it('should have more than 2 characters', () => {
-        render(<RegistrationForm />);
-        const firstName = screen.getByLabelText('First name');
-        fireEvent.change(firstName, {target: {value: 'abdulahi'}});
-        expect(firstName.value).toBe('abdulahi');
-    });
-})
