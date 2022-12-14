@@ -19,7 +19,7 @@
 # Start the app
 #CMD [ "npx", "serve", "build" ]
 
-FROM tiangolo/node-frontend:12 as build-stage
+FROM tiangolo/node-frontend:10 as build-stage
 RUN npm install -g npm@latest
 WORKDIR /app
 COPY package*.json /app/
