@@ -6,10 +6,12 @@ WORKDIR /app
 # Copy app files
 COPY . .
 # ==== BUILD =====
+# Upates to the lates npm version
+RUN npm install -g npm@latest
 # Install dependencies (npm ci makes sure the exact versions in the lockfile gets installed)
-RUN npm ci 
+RUN yarn install 
 # Build the app
-RUN npm run build
+RUN yarn run build
 # ==== RUN =======
 # Set the env to "production"
 ENV NODE_ENV production
