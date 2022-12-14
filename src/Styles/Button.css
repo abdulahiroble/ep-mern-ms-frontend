@@ -1,9 +1,0 @@
-button{
-    background-color:blue;
-}
-
-.modified-item:hover {
-    border-bottom: none !important;
-    transition: none !important;
-    background-color:#001529!important;
-  }
