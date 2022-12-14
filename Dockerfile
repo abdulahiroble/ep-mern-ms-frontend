@@ -26,14 +26,8 @@ COPY package.json package-lock.json ./
 RUN yarn install
 
 COPY . .
-RUN yarn run build
+RUN npm yarn build
 
 FROM nginx:1.18-alpine
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build-step /build/build /frontend/build
-RUN npm run build
-
-FROM nginx:1.15.8-alpine
-
-COPY --from=build /app/build /usr/share/nginx/html
-COPY --from=build /app/nginx/nginx.conf /etc/nginx/nginx.conf
