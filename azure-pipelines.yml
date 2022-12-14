@@ -21,7 +21,8 @@ steps:
     inline: '
     ls -l;
     cd ~/../app; 
-    sudo docker build . -t test'
+    docker build -t my-react-app
+    docker run -p 80:80 my-react-app'
     readyTimeout: '20000'
     
   
