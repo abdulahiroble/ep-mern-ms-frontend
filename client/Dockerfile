@@ -23,5 +23,5 @@ WORKDIR /app
 COPY package.json ./
 COPY package-lock.json ./
 COPY ./ ./
-RUN yarn i
-CMD ["uarn", "run", "start"]
+RUN yarn install
+CMD ["yarn", "run", "start"]
