@@ -6,10 +6,11 @@
 # Copy app files
 #COPY . .
 # ==== BUILD =====
+# Upates to the lates npm version
+#RUN npm install -g npm@latest
 # Install dependencies (npm ci makes sure the exact versions in the lockfile gets installed)
 #RUN npm ci 
 # Build the app
-#RUN npm run build
 # ==== RUN =======
 # Set the env to "production"
 #ENV NODE_ENV production
@@ -30,3 +31,9 @@ RUN yarn run build
 FROM nginx:1.18-alpine
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build-step /build/build /frontend/build
+RUN npm run build
+
+FROM nginx:1.15.8-alpine
+
+COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/nginx/nginx.conf /etc/nginx/nginx.conf

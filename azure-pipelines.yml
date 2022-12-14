@@ -13,3 +13,16 @@ steps:
     contents: '**'
     targetFolder: '/app'
     readyTimeout: '20000'
+
+- task: SSH@0
+  inputs:
+    sshEndpoint: 'EP-Server'
+    runOptions: 'inline'
+    inline: '
+    ls -l;
+    cd ~/../app; 
+    sudo docker build . -t test'
+    readyTimeout: '20000'
+    
+  
+
