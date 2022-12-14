@@ -16,6 +16,9 @@ RUN yarn run build
 # Set the env to "production"
 ENV NODE_ENV production
 # Expose the port on which the app will be running (3000 is the default that `serve` uses)
-EXPOSE 3000
-# Start the app
-CMD [ "npx", "serve", "build" ]
+RUN npm run build
+
+FROM nginx:1.15.8-alpine
+
+COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/nginx/nginx.conf /etc/nginx/nginx.conf
