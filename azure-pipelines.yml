@@ -21,7 +21,6 @@ steps:
     inline: '
     cd ~/../app; 
     docker-compose up --build -d'
+    failOnStdErr: false
     readyTimeout: '20000'
     
-  
-
