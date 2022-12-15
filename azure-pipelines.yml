@@ -12,11 +12,10 @@ jobs:
       inputs:
         versionSpec: '16.x'
       displayName: 'Install Node.js'
-      condition: 
 
     - script: |
-        yarn add jest jest-environment-jsdom
-      displayName: 'install packages'
+        yarn add jest jest-environment-jsdom mocha cypress-multi-reporters mochawesome cypress-mochawesome-reporter
+      displayName: 'yarn add jest'
       workingDirectory: ./client
 
 
@@ -24,24 +23,45 @@ jobs:
         yarn test
       displayName: 'yarn test'
       workingDirectory: ./client
+  
     
-  # - job: deploy
-  #   steps:
-  #   - task: CopyFilesOverSSH@0
-  #     displayName: "Publish Pipeline Artifact"
-  #     inputs:
-  #       sshEndpoint: 'EP-Server'
-  #       contents: '**'
-  #       targetFolder: '/app'
-  #       readyTimeout: '20000'
+  - job: deploy
+    steps:
+    - task: CopyFilesOverSSH@0
+      displayName: "Publish Pipeline Artifact"
+      inputs:
+        sshEndpoint: 'EP-Server'
+        contents: '**'
+        targetFolder: '/app'
+        readyTimeout: '20000'
 
-  #   - task: SSH@0
-  #     inputs:
-  #       sshEndpoint: 'EP-Server'
-  #       runOptions: 'inline'
-  #       inline: '
-  #       cd ~/../app; 
-  #       docker-compose up --build -d'
-  #       failOnStdErr: false
-  #       readyTimeout: '20000'
-    
+    - task: SSH@0
+      inputs:
+          sshEndpoint: 'EP-Server'
+          runOptions: 'inline'
+          inline: 'cd ~/../app; docker-compose up --build -d'
+          failOnStdErr: false
+          readyTimeout: '20000'
+
+  - job: cypress
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps: 
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '16.x'
+      displayName: 'Install Node.js'
+
+    - script: |
+        yarn add mocha cypress-multi-reporters mochawesome cypress-mochawesome-reporter
+      displayName: 'Install node packages'
+      workingDirectory: ./client
+
+
+    - script: |
+        npx cypress run --e2e
+      displayName: 'npx cypress run --e2e'
+      workingDirectory: ./client
+    dependsOn:
+    - test
+    - deploy
