@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let url = 'http://localhost:8080';
+let url = process.env.REACT_APP_PROD_URL;
 if (process.env.REACT_APP_ENVIRONMENT != 'prod') {
     url = process.env.REACT_APP_DEVELOPMENT_URL;
 }
@@ -28,7 +28,7 @@ class LoadUserCollection {
         const result = await fetch(`${url}/api/login/verify`, header)
         const data = await result.json();
 
-        // console.log("RESULT====",data)
+        
         return data;
     }
 
