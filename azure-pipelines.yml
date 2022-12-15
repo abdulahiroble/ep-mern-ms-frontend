@@ -24,8 +24,6 @@ jobs:
         yarn test
       displayName: 'yarn test'
       workingDirectory: ./client
-      env:
-        JWT_PRIVATE_KEY: $(AAJ-AWESOME-KEY)    
     
   # - job: deploy
   #   steps:
