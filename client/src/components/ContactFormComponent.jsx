@@ -14,6 +14,7 @@ const ContactFormComponent = () => {
 
   const onFinish = async (values) => {
     const sendRequet = await ApiContext.LoadRequestCollection.sendRequest(values);
+    console.log(sendRequet)
 
     if (sendRequet?.data?.success) {
       alert("Thank you for your message")
@@ -22,6 +23,8 @@ const ContactFormComponent = () => {
       }
 
       handleClick()
+    }else{
+      alert(sendRequet.data.msg)
     }
   };
 
@@ -38,7 +41,7 @@ const ContactFormComponent = () => {
       <Form.Item
         label="Name"
         name="firstname"
-        rules={[{required: true, message: 'Please input your name!'}]}
+        rules={[{required: true, message: 'Firstname must be minimum 3 characters long',  min:3}]}
       >
         <Input />
       </Form.Item>
@@ -46,7 +49,7 @@ const ContactFormComponent = () => {
       <Form.Item
         label="Email"
         name="email"
-        rules={[{required: true, message: 'Please input your email!'}]}
+        rules={[{required: true,  message: 'Email must be minimum 3 characters long',  min:3}]}
       >
         <Input />
       </Form.Item>
@@ -54,9 +57,9 @@ const ContactFormComponent = () => {
       <Form.Item
         label="Text Message"
         name="msg"
-        rules={[{required: true, message: 'Please input your message!'}]}
+        rules={[{required: true, message: 'Text message must be minimum 3 characters long',  min:3}]}
       >
-        <TextArea rows={4} placeholder="Max 555 characters" maxLength={555} />
+        <TextArea rows={4} placeholder="Max 555 characters" maxLength={555}/>
       </Form.Item>
 
       <Form.Item wrapperCol={{offset: 8, span: 24}}>
