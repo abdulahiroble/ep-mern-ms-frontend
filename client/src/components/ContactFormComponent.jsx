@@ -18,7 +18,7 @@ const ContactFormComponent = () => {
     if (sendRequet?.data?.success) {
       alert("Thank you for your message")
       function handleClick() {
-        navigate('/some/path');
+        navigate('/');
       }
 
       handleClick()
