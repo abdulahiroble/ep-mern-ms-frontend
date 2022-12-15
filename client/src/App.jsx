@@ -79,7 +79,7 @@ export default function App() {
             ))
             }
           </Row>
-          <Paginate current={current} total={initialData.data?.page.totalPages} onChange={onChange => nextPage(onChange)} />
+          {/* <Paginate current={current} total={initialData.data?.page.totalPages} onChange={onChange => nextPage(onChange)} /> */}
         </Col>
       </Row>
       <Footer />

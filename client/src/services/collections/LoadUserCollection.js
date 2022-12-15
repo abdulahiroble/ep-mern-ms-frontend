@@ -1,11 +1,13 @@
 import axios from "axios";
 
-let url = process.env.REACT_APP_PROD_URL;
+let url = 'http://localhost:8080';
 if (process.env.REACT_APP_ENVIRONMENT != 'prod') {
     url = process.env.REACT_APP_DEVELOPMENT_URL;
 }
 
 class LoadUserCollection {
+
+
     authenticateUser = async (data) => {
         data.key = process.env.REACT_APP_SECRET_KEY;
         console.log(data)
@@ -31,6 +33,8 @@ class LoadUserCollection {
     }
 
     getUserProfile = async (id) => {
+        // let url = 'http://207.154.228.42:3001/';
+
 
         const result = await axios.get(`${url}/api/users/${id}`)
         console.log("RESULT=====", result)

@@ -15,9 +15,8 @@ jobs:
       condition: 
 
     - script: |
-        yarn add jest
-        yarn add jest-environment-jsdom
-      displayName: 'yarn add jest'
+        yarn add jest jest-environment-jsdom
+      displayName: 'install packages'
       workingDirectory: ./client
 
 

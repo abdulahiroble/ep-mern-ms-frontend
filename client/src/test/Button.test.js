@@ -1,6 +1,5 @@
 import React from 'react';
 import {render, fireEvent, screen, act} from '@testing-library/react';
-import Button from '../components/Button';
 // import {screen, configure} from '@testing-library/react'
 import '@testing-library/jest-dom'
 import RegistrationForm from '../components/RegistrationForm';
@@ -14,8 +13,8 @@ Object.defineProperty(window, 'matchMedia', {
         matches: false,
         media: query,
         onchange: null,
-        addListener: jest.fn(), // Deprecated
-        removeListener: jest.fn(), // Deprecated
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
         addEventListener: jest.fn(),
         removeEventListener: jest.fn(),
         dispatchEvent: jest.fn(),
@@ -107,18 +106,3 @@ describe('Contact', () => {
         await act(() => promise)
     });
 })
-
-describe('Button', () => {
-    it('should render a button with the provided text', () => {
-        render(<Button text="Click me" />);
-        expect(screen.getByText('Click me')).toBeInTheDocument();
-    });
-
-    it('should call the onClick prop when clicked', () => {
-        const onClick = jest.fn();
-        render(<Button onClick={onClick} text="Click me" />);
-        const button = screen.getByText('Click me');
-        fireEvent.click(button);
-        expect(onClick).toHaveBeenCalled();
-    });
-});
