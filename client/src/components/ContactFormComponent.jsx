@@ -1,7 +1,7 @@
 // ====   MODULS ====
 import React from 'react';
 import {Button, Form, Input} from 'antd';
-import {useNavigate, BrowserRouter} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 
 

@@ -30,10 +30,13 @@ jest.mock('react-router-dom', () => {
 
 
 describe('First Name', () => {
-    it('Test whether first name has more than minimum 2 characters', () => {
+    it('Test whether first name has more than minimum 2 characters', async () => {
+        const promise = Promise.resolve()
         render(<RegistrationForm />);
         const firstName = screen.getByLabelText('First name');
         fireEvent.change(firstName, {target: {value: 'abdulahi'}});
+
+        await act(() => promise)
 
         // Valid partion test
         expect(firstName.value.length).toBeGreaterThan(5);
@@ -46,7 +49,9 @@ describe('First Name', () => {
 
 
 describe('Last Name', () => {
-    it('Test whether a last name has more than minimum 3 characters', () => {
+    it('Test whether a last name has more than minimum 3 characters', async () => {
+        const promise = Promise.resolve()
+
         render(<RegistrationForm />);
         const lastName = screen.getByLabelText('Last name');
         fireEvent.change(lastName, {target: {value: 'mohamed'}});
@@ -57,11 +62,15 @@ describe('Last Name', () => {
         expect(lastName.value.length).not.toBeLessThan(2);
         // Invalid upper partion test
         expect(lastName.value.length).not.toBeGreaterThanOrEqual(52);
+        await act(() => promise)
+
     });
 })
 
 describe('Address', () => {
-    it('Test whether a address has more than minimum 2 characters', () => {
+    it('Test whether a address has more than minimum 2 characters', async () => {
+        const promise = Promise.resolve()
+
         render(<RegistrationForm />);
         const lastName = screen.getByLabelText('Address');
         fireEvent.change(lastName, {target: {value: 'Peter bangs vej 123'}});
@@ -72,11 +81,14 @@ describe('Address', () => {
         expect(lastName.value.length).not.toBeLessThan(2);
         // Invalid upper partion test
         expect(lastName.value.length).not.toBeGreaterThanOrEqual(52);
+        await act(() => promise)
     });
 })
 
 describe('Contact', () => {
-    it('Test whether a contact request message has more than minimum 1 characters', () => {
+    it('Test whether a contact request message has more than minimum 1 characters', async () => {
+        const promise = Promise.resolve()
+
 
         const navigate = jest.fn();
         useNavigate.mockImplementation(() => navigate);
@@ -92,6 +104,7 @@ describe('Contact', () => {
         expect(lastName.value.length).not.toBeLessThan(-1);
         // Invalid upper partion test
         expect(lastName.value.length).not.toBeGreaterThanOrEqual(723);
+        await act(() => promise)
     });
 })
 
