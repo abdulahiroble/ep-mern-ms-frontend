@@ -42,13 +42,22 @@ jobs:
           inline: 'cd ~/../app; docker-compose up --build -d'
           failOnStdErr: false
           readyTimeout: '20000'
-      
-      
+
+  - job: cypress
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps: 
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '16.x'
+      displayName: 'Install Node.js'
+
     - script: |
-        yarn add jest jest-environment-jsdom mocha cypress-multi-reporters mochawesome cypress-mochawesome-reporter
-      displayName: 'yarn add jest'
+        yarn add mocha cypress-multi-reporters mochawesome cypress-mochawesome-reporter
+      displayName: 'Install node packages'
       workingDirectory: ./client
-    
+
+
     - script: |
         npx cypress run --e2e
       displayName: 'npx cypress run --e2e'
