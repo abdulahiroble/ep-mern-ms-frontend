@@ -1,3 +1,7 @@
+Cypress.on('uncaught:exception', (err, runnable) => {
+    return false;
+});
+
 describe("Click pagination number to show next event page", () => {
     it("passes", () => {
 

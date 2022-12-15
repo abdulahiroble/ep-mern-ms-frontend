@@ -1,3 +1,7 @@
+Cypress.on('uncaught:exception', (err, runnable) => {
+  return false;
+});
+
 describe("Sign in user and search event by zipcode", () => {
   it("passes", () => {
 

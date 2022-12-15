@@ -12,11 +12,9 @@ jobs:
       inputs:
         versionSpec: '16.x'
       displayName: 'Install Node.js'
-      condition: 
 
     - script: |
-        yarn add jest
-        yarn add jest-environment-jsdom
+        yarn add jest jest-environment-jsdom mocha cypress-multi-reporters mochawesome cypress-mochawesome-reporter
       displayName: 'yarn add jest'
       workingDirectory: ./client
 
@@ -24,6 +22,11 @@ jobs:
     - script: |
         yarn test
       displayName: 'yarn test'
+      workingDirectory: ./client
+  
+    - script: |
+        npx cypress run --e2e
+      displayName: 'npx cypress run --e2e'
       workingDirectory: ./client
     
   # - job: deploy
