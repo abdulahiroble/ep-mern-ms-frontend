@@ -62,3 +62,6 @@ jobs:
         npx cypress run --e2e
       displayName: 'npx cypress run --e2e'
       workingDirectory: ./client
+    dependsOn:
+    - test
+    - deploy
