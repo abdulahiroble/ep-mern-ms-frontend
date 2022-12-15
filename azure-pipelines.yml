@@ -25,23 +25,23 @@ jobs:
       workingDirectory: ./client
   
     
-  - job: deploy
-    steps:
-    - task: CopyFilesOverSSH@0
-      displayName: "Publish Pipeline Artifact"
-      inputs:
-        sshEndpoint: 'EP-Server'
-        contents: '**'
-        targetFolder: '/app'
-        readyTimeout: '20000'
+  # - job: deploy
+  #   steps:
+  #   - task: CopyFilesOverSSH@0
+  #     displayName: "Publish Pipeline Artifact"
+  #     inputs:
+  #       sshEndpoint: 'EP-Server'
+  #       contents: '**'
+  #       targetFolder: '/app'
+  #       readyTimeout: '20000'
 
-    - task: SSH@0
-      inputs:
-          sshEndpoint: 'EP-Server'
-          runOptions: 'inline'
-          inline: 'cd ~/../app; docker-compose up --build -d'
-          failOnStdErr: false
-          readyTimeout: '20000'
+  #   - task: SSH@0
+  #     inputs:
+  #         sshEndpoint: 'EP-Server'
+  #         runOptions: 'inline'
+  #         inline: 'cd ~/../app; docker-compose up --build -d'
+  #         failOnStdErr: false
+  #         readyTimeout: '20000'
 
   - job: cypress
     pool:
@@ -64,4 +64,4 @@ jobs:
       workingDirectory: ./client
     dependsOn:
     - test
-    - deploy
+    # - deploy

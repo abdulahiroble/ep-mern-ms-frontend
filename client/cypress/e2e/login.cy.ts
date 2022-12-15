@@ -7,7 +7,7 @@ describe("Sign in user and search event by zipcode", () => {
 
 
     // Visit the app root
-    cy.visit("http://localhost:3000");
+    cy.visit("http://207.154.228.42/");
     cy.wait(2000);
     // navigate to login page
     cy.findByRole("link", {name: /login/i}).click();
