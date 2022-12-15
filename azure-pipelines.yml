@@ -24,28 +24,26 @@ jobs:
       displayName: 'yarn test'
       workingDirectory: ./client
   
+    
+  - job: deploy
+    steps:
+    - task: CopyFilesOverSSH@0
+      displayName: "Publish Pipeline Artifact"
+      inputs:
+        sshEndpoint: 'EP-Server'
+        contents: '**'
+        targetFolder: '/app'
+        readyTimeout: '20000'
+
+    - task: SSH@0
+      inputs:
+          sshEndpoint: 'EP-Server'
+          runOptions: 'inline'
+          inline: 'cd ~/../app; docker-compose up --build -d'
+          failOnStdErr: false
+          readyTimeout: '20000'
+    
     - script: |
         npx cypress run --e2e
       displayName: 'npx cypress run --e2e'
       workingDirectory: ./client
-    
-  # - job: deploy
-  #   steps:
-  #   - task: CopyFilesOverSSH@0
-  #     displayName: "Publish Pipeline Artifact"
-  #     inputs:
-  #       sshEndpoint: 'EP-Server'
-  #       contents: '**'
-  #       targetFolder: '/app'
-  #       readyTimeout: '20000'
-
-  #   - task: SSH@0
-  #     inputs:
-  #       sshEndpoint: 'EP-Server'
-  #       runOptions: 'inline'
-  #       inline: '
-  #       cd ~/../app; 
-  #       docker-compose up --build -d'
-  #       failOnStdErr: false
-  #       readyTimeout: '20000'
-    
