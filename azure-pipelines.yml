@@ -1,26 +1,49 @@
 trigger:
 - main
 
-pool:
-  vmImage: 'ubuntu-latest'
 
-steps:
-  
-- task: CopyFilesOverSSH@0
-  displayName: "Publish Pipeline Artifact"
-  inputs:
-    sshEndpoint: 'EP-Server'
-    contents: '**'
-    targetFolder: '/app'
-    readyTimeout: '20000'
 
-- task: SSH@0
-  inputs:
-    sshEndpoint: 'EP-Server'
-    runOptions: 'inline'
-    inline: '
-    cd ~/../app; 
-    docker-compose up --build -d'
-    failOnStdErr: false
-    readyTimeout: '20000'
+jobs:
+  - job: test
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps: 
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '16.x'
+      displayName: 'Install Node.js'
+      condition: 
+
+    - script: |
+        yarn add jest
+      displayName: 'yarn add jest'
+      workingDirectory: ./client
+
+
+    - script: |
+        yarn test
+      displayName: 'yarn test'
+      workingDirectory: ./client
+      env:
+        JWT_PRIVATE_KEY: $(AAJ-AWESOME-KEY)    
+    
+  # - job: deploy
+  #   steps:
+  #   - task: CopyFilesOverSSH@0
+  #     displayName: "Publish Pipeline Artifact"
+  #     inputs:
+  #       sshEndpoint: 'EP-Server'
+  #       contents: '**'
+  #       targetFolder: '/app'
+  #       readyTimeout: '20000'
+
+  #   - task: SSH@0
+  #     inputs:
+  #       sshEndpoint: 'EP-Server'
+  #       runOptions: 'inline'
+  #       inline: '
+  #       cd ~/../app; 
+  #       docker-compose up --build -d'
+  #       failOnStdErr: false
+  #       readyTimeout: '20000'
     
