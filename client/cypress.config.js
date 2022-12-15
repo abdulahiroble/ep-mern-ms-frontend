@@ -6,7 +6,7 @@ module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
 
   e2e: {
-    baseUrl: process.env.PUBLIC_URL,
+    baseUrl: "http://207.154.228.42/",
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
     },
