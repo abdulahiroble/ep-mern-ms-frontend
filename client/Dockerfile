@@ -23,5 +23,6 @@ WORKDIR /app
 COPY package.json ./
 COPY package-lock.json ./
 COPY ./ ./
-RUN yarn install
+RUN yarn cache clean
+RUN yarn --network-timeout 1000000
 CMD ["yarn", "run", "start"]

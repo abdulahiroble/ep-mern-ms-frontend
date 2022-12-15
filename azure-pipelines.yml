@@ -11,17 +11,17 @@ jobs:
     - task: NodeTool@0
       inputs:
         versionSpec: '16.x'
-      displayName: 'Install Node.js'
+      displayName: 'update node.js'
 
     - script: |
         yarn add jest jest-environment-jsdom
-      displayName: 'install node packages'
+      displayName: 'install test packages'
       workingDirectory: ./client
 
 
     - script: |
-        yarn test
-      displayName: 'Testing..'
+        yarn test --coverage
+      displayName: 'testing..'
       workingDirectory: ./client
   
     
@@ -50,18 +50,18 @@ jobs:
     - task: NodeTool@0
       inputs:
         versionSpec: '16.x'
-      displayName: 'Install Node.js'
+      displayName: 'update node.js'
 
     - script: |
         yarn add mocha cypress-multi-reporters mochawesome cypress-mochawesome-reporter
-      displayName: 'install node packages'
+      displayName: 'install cypress packages'
       workingDirectory: ./client
 
 
     - script: |
         npx cypress run --e2e
-      displayName: 'run cypress'
+      displayName: 'testing..'
       workingDirectory: ./client
     dependsOn:
     - test
-    # - deploy
+    - deploy
