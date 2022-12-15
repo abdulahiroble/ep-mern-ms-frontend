@@ -4,7 +4,9 @@ import Button from '../components/Button';
 // import {screen, configure} from '@testing-library/react'
 import '@testing-library/jest-dom'
 import RegistrationForm from '../components/RegistrationForm';
-import ProfileComponent from '../components/ProfileComponent';
+import ContactFormComponent from '../components/ContactFormComponent';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 Object.defineProperty(window, 'matchMedia', {
     writable: true,
@@ -19,6 +21,13 @@ Object.defineProperty(window, 'matchMedia', {
         dispatchEvent: jest.fn(),
     })),
 });
+
+jest.mock('react-router-dom', () => {
+    return {
+        useNavigate: jest.fn(),
+    };
+});
+
 
 describe('First Name', () => {
     it('Test whether first name has more than minimum 2 characters', () => {
@@ -66,20 +75,25 @@ describe('Address', () => {
     });
 })
 
-// describe('Contact', () => {
-//     it('Test whether a contact request message has more than minimum 1 characters', () => {
-//         render(<ProfileComponent />);
-//         const lastName = screen.getByLabelText('Text Message');
-//         fireEvent.change(lastName, {target: {value: 'Hej med dig'}});
+describe('Contact', () => {
+    it('Test whether a contact request message has more than minimum 1 characters', () => {
 
-//         // Valid partion test
-//         expect(lastName.value.length).toBeGreaterThan(255);
-//         // Invalid lower partion test
-//         expect(lastName.value.length).not.toBeLessThan(-1);
-//         // Invalid upper partion test
-//         expect(lastName.value.length).not.toBeGreaterThanOrEqual(723);
-//     });
-// })
+        const navigate = jest.fn();
+        useNavigate.mockImplementation(() => navigate);
+
+        render(<ContactFormComponent />);
+
+        const lastName = screen.getByLabelText('Text Message');
+        fireEvent.change(lastName, {target: {value: 'Hej med dig'}});
+
+        // Valid partion test
+        expect(lastName.value.length).toBeLessThanOrEqual(255);
+        // Invalid lower partion test
+        expect(lastName.value.length).not.toBeLessThan(-1);
+        // Invalid upper partion test
+        expect(lastName.value.length).not.toBeGreaterThanOrEqual(723);
+    });
+})
 
 describe('Button', () => {
     it('should render a button with the provided text', () => {
