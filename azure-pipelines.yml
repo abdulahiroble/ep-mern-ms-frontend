@@ -16,6 +16,7 @@ jobs:
 
     - script: |
         yarn add jest
+        yarn add jest-environment-jsdom
       displayName: 'yarn add jest'
       workingDirectory: ./client
 
