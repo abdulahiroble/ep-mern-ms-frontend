@@ -7,7 +7,7 @@ describe("Sign in user and search event by zipcode", () => {
 
 
     // Visit the app root
-    cy.visit("http://localhost:3000");
+    cy.visit("http://207.154.228.42/");
     cy.wait(2000);
     // navigate to login page
     cy.findByRole("link", {name: /login/i}).click();
@@ -23,10 +23,10 @@ describe("Sign in user and search event by zipcode", () => {
     cy.wait(5000);
 
     // search for event by zipcode
-    cy.findByRole('textbox').type("2610")
+    // cy.findByRole('textbox').type("2610")
 
     // click on search button
-    cy.findByRole('button', {name: /search/i}).click();
+    // cy.findByRole('button', {name: /search/i}).click();
 
   });
 });
