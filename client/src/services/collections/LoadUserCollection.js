@@ -33,12 +33,9 @@ class LoadUserCollection {
     }
 
     getUserProfile = async (id) => {
-        // let url = 'http://207.154.228.42:3001/';
-
+        let url = 'http://207.154.228.42:3001';
 
         const result = await axios.get(`${url}/api/users/${id}`)
-        console.log("RESULT=====", result)
-
         return result;
     }
 
