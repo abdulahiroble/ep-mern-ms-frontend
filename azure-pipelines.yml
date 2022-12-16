@@ -1,26 +1,69 @@
 trigger:
 - main
 
-pool:
-  vmImage: 'ubuntu-latest'
 
-steps:
+
+jobs:
+  - job: test
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps: 
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '16.x'
+      displayName: 'update node.js'
+
+    - script: |
+        yarn add jest jest-environment-jsdom
+      displayName: 'install test packages'
+      workingDirectory: ./client
+
+
+    - script: |
+        yarn test --coverage
+      displayName: 'testing..'
+      workingDirectory: ./client
   
-- task: CopyFilesOverSSH@0
-  displayName: "Publish Pipeline Artifact"
-  inputs:
-    sshEndpoint: 'EP-Server'
-    contents: '**'
-    targetFolder: '/app'
-    readyTimeout: '20000'
-
-- task: SSH@0
-  inputs:
-    sshEndpoint: 'EP-Server'
-    runOptions: 'inline'
-    inline: '
-    cd ~/../app; 
-    docker-compose up --build -d'
-    failOnStdErr: false
-    readyTimeout: '20000'
     
+  - job: deploy
+    steps:
+    - task: CopyFilesOverSSH@0
+      displayName: "Publish Pipeline Artifact"
+      inputs:
+        sshEndpoint: 'EP-Server'
+        contents: '**'
+        targetFolder: '/app'
+        readyTimeout: '20000'
+
+    - task: SSH@0
+      inputs:
+          sshEndpoint: 'EP-Server'
+          runOptions: 'inline'
+          inline: 'cd ~/../app; docker-compose up --build -d'
+          failOnStdErr: false
+          readyTimeout: '20000'
+    dependsOn:
+    - test
+
+  - job: cypress
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps: 
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '16.x'
+      displayName: 'update node.js'
+
+    - script: |
+        yarn add mocha cypress-multi-reporters mochawesome cypress-mochawesome-reporter
+      displayName: 'install cypress packages'
+      workingDirectory: ./client
+
+
+    - script: |
+        npx cypress run --e2e
+      displayName: 'testing..'
+      workingDirectory: ./client
+    dependsOn:
+    - test
+    - deploy

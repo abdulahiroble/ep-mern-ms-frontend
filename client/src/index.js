@@ -45,14 +45,20 @@ ReactDOM.render(
       <Route path="eventdetails/:id" element={<EventDetail />} />
       <Route path="eventdetails3" element={<EventDetail2 />} />
       <Route path="contact" element={<ContactForm />} />
-      
-      <Route 
-        path="profile/:id" 
+
+      {/* <BrowserRouter>
+        <Routes>
+          <Route path="*" element={<ContactForm />} />
+        </Routes>
+      </BrowserRouter> */}
+
+      <Route
+        path="profile/:id"
         element={
           <ProtectedRoute>
             <Profile />
           </ProtectedRoute>
-        } 
+        }
       />
       <Route path="/Registration" element={<Registration />} />
       <Route path="categoryDetails/:id" element={<CategoryDetails />} />
