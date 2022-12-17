@@ -12,6 +12,6 @@ import ApiContext from '../services/ApiContext'
 describe('Find user', () => {
     it('Testing if it is possible to find a user', async () => {
 
-        expect(5).toBe(5);
+        expect(5).toBe(6);
     });
 })
