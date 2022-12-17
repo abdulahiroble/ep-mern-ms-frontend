@@ -2,9 +2,8 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   return false;
 });
 
-describe("Sign in user and search event by zipcode", () => {
+describe("Sign in user and logout", () => {
   it("passes", () => {
-
 
     // Visit the app root
     cy.visit("http://207.154.228.42/");
@@ -22,11 +21,8 @@ describe("Sign in user and search event by zipcode", () => {
     // wait for the page to load
     cy.wait(5000);
 
-    // search for event by zipcode
-    // cy.findByRole('textbox').type("2610")
-
-    // click on search button
-    // cy.findByRole('button', {name: /search/i}).click();
+    // logout
+    cy.findByText(/logout/i).click()
 
   });
 });
