@@ -62,7 +62,7 @@ export default function App() {
         <Navigation />
       </Affix>
       <Col type="flex" align="middle" style={{marginTop: "2%", marginBottom: "2%"}}>
-        <h1>Event Planner HEJ</h1>
+        <h1>Event Planner</h1>
       </Col>
       {/* === SLIDER CAROUSEL === */}
       <SliderComponent dataResult={sliderImages} />

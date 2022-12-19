@@ -40,6 +40,7 @@ class LoadUserCollection {
     }
 
     updateProfile = async (data) => {
+        console.log("URL===",url)
         console.log("body===",data)
         const result = await axios.put(`${url}/api/user`, data)
         console.log("RESULT=====", result)
