@@ -13,11 +13,11 @@ describe("Send message", () => {
 
         cy.wait(2000);
 
-        cy.findByRole('textbox', {name: /name/i}).type("abdulahi");
+        cy.findByRole('textbox', {name: /name/i}).type("Andreas");
 
         cy.wait(2000);
 
-        cy.findByRole('textbox', {name: /email/i}).type("abdulahi@hotmail.com");
+        cy.findByRole('textbox', {name: /email/i}).type("Andreas@hotmail.com");
 
         cy.wait(2000);
 

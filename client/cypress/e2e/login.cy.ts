@@ -12,8 +12,8 @@ describe("Sign in user and logout", () => {
     cy.findByRole("link", {name: /login/i}).click();
 
     // fill in the form
-    cy.findByRole("textbox", {name: /email/i}).type("sejenu@gmail.com");
-    cy.findByLabelText(/password/i).type("naruto123");
+    cy.findByRole("textbox", {name: /email/i}).type("a@a.dk");
+    cy.findByLabelText(/password/i).type("a@a.dk");
 
     // submit the form
     cy.findByRole('button', {name: /log in/i}).click();
