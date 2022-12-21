@@ -13,7 +13,7 @@ describe("Sign in user and logout", () => {
 
     // fill in the form
     cy.findByRole("textbox", {name: /email/i}).type("a@a.dk");
-    cy.findByLabelText(/password/i).type("a@a.dk");
+    cy.findByLabelText(/password/i).type("1234");
 
     // submit the form
     cy.findByRole('button', {name: /log in/i}).click();
