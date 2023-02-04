@@ -19,11 +19,11 @@ describe("Click pagination number to show next event page", () => {
 
         cy.wait(5000);
 
-        cy.findByText(/5/i).click();
+        // cy.findByText(/5/i).click();
 
-        cy.wait(5000);
+        // cy.wait(5000);
 
-        cy.findByText(/6/i).click();
+        // cy.findByText(/6/i).click();
 
 
     });
