@@ -14,7 +14,7 @@ jobs:
       displayName: 'update node.js'
 
     - script: |
-        npm install @testing-library/cypress@8.0.7 jest jest-environment-jsdom mocha cypress-multi-reporters mochawesome cypress-mochawesome-reporter
+        npm install cypress jest jest-environment-jsdom mocha cypress-multi-reporters mochawesome cypress-mochawesome-reporter
       displayName: 'install test packages'
       workingDirectory: ./client
 
