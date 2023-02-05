@@ -14,13 +14,13 @@ jobs:
       displayName: 'update node.js'
 
     - script: |
-        npm install cypress jest jest-environment-jsdom mocha cypress-multi-reporters mochawesome cypress-mochawesome-reporter
+        yarn add jest jest-environment-jsdom
       displayName: 'install test packages'
       workingDirectory: ./client
 
 
     - script: |
-        npm test --coverage
+        yarn test --coverage
       displayName: 'testing..'
       workingDirectory: ./client
   
@@ -54,10 +54,10 @@ jobs:
         versionSpec: '16.x'
       displayName: 'update node.js'
 
-    # - script: |
-    #     npm install mocha cypress-multi-reporters mochawesome cypress-mochawesome-reporter
-    #   displayName: 'install cypress packages'
-    #   workingDirectory: ./client
+    - script: |
+        yarn add mocha cypress-multi-reporters mochawesome cypress-mochawesome-reporter
+      displayName: 'install cypress packages'
+      workingDirectory: ./client
 
 
     - script: |
