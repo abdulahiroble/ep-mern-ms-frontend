@@ -7,7 +7,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import axios from "axios";
 // #endregion
 
-// #region ==== COMPONENT ====
+// #region ==== PAGES ====
 import EventDetail from './pages/EventDetails'
 import EventDetail2 from './pages/EventDetails2'
 import ContactForm from './pages/ContactForm'
@@ -15,6 +15,7 @@ import Profile from './pages/profile'
 import Registration from './pages/Registration';
 import CategoryDetails from './components/Partials/CategoryDetails';
 import Login from './pages/Login';
+import AdminUI from 'pages/AdminUI';
 // #endregion
 
 //#region ==== OTHER ====
@@ -45,6 +46,7 @@ ReactDOM.render(
       <Route path="eventdetails/:id" element={<EventDetail />} />
       <Route path="eventdetails3" element={<EventDetail2 />} />
       <Route path="contact" element={<ContactForm />} />
+      <Route path="admin" element={<ProtectedRoute><AdminUI /></ProtectedRoute>} />
 
       {/* <BrowserRouter>
         <Routes>
