@@ -2,6 +2,9 @@
 
 # dependencies
 node_modules/
+client/cypress/reports
+client/coverage
+client/.env
 .pnp
 .pnp.js
 
