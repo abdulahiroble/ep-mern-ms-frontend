@@ -2,7 +2,7 @@ import axios from "axios";
 
 let url = process.env.REACT_APP_PROD_URL;
 if (process.env.REACT_APP_ENVIRONMENT != 'prod') {
-    url = process.env.REACT_APP_DEVELOPMENT_URL;
+    url = process.env.REACT_APP_DEVELOPMENT_AUTH_URL;
 }
 
 class LoadUserCollection {
@@ -33,8 +33,6 @@ class LoadUserCollection {
     }
 
     getUserProfile = async (id) => {
-        let url = 'http://207.154.228.42:3001';
-
         const result = await axios.get(`${url}/api/users/${id}`)
         return result;
     }

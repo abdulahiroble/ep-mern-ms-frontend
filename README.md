@@ -1,3 +1,18 @@
+# env file info
+
+REACT_APP_DEVELOPMENT_URL = http://localhost:8081
+REACT_APP_DEVELOPMENT_AUTH_URL = http://localhost:3001
+REACT_APP_DEVELOPMENT_SEARCH_SERVICE_URL = http://localhost:3002
+REACT_APP_PROD_URL = http://207.154.228.42:3001
+REACT_APP_ENVIRONMENT=prod
+
+REACT_APP_SECRET_CODE=123
+
+REACT_APP_APIKEY_GOOGLE_MAPS=AIzaSyCywB8YAGzfsCy72UJ6JaOJYIzTr84P-XA
+
+REACT_APP_SECRET_KEY = AAJ-AWESOME-KEY
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
