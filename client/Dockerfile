@@ -21,7 +21,8 @@
 FROM node:alpine
 WORKDIR /app
 COPY package.json ./
-COPY package-lock.json ./
+# COPY package-lock.json ./
+COPY yarn.lock ./
 COPY ./ ./
 RUN yarn cache clean
 RUN yarn --network-timeout 1000000

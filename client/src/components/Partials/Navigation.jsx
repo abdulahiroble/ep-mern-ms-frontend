@@ -19,6 +19,7 @@ const Navigation = () => {
   const logout = ()=>{
     localStorage.removeItem('token')
     localStorage.removeItem('userId')
+    localStorage.removeItem('admin')
     navigate('/')
   }
   
@@ -50,6 +51,16 @@ const Navigation = () => {
           Profile
         </Link>
       </Menu.Item>
+      {isLoggedIn.isAdmin ? 
+        <Menu.Item key="Login" style={{ paddingTop: "5px"}} icon={<ContactsOutlined />}>
+          <Link to={"/admin/"}>
+            Admin
+          </Link>
+        </Menu.Item>
+        :
+          <>
+          </>
+      }
       </>
     :
     <>

@@ -18,9 +18,23 @@ const App = () => {
   const onFinish = async (values) => {
     const result = await LoadUserCollection.authenticateUser(values)
 
+    if(result.data.isActive == false) {
+      alert("User not activated")
+      return false;
+    }
+
     if(result.data.validPassword){
       localStorage.setItem('token',result.data.generatedToken);
       localStorage.setItem('userId',result.data.userId);
+      
+      const adminExists = result.data.userRole.find(x => x.role == 'admin') != undefined ? result.data.userRole.find(x => x.role == 'admin') : {}
+
+      if(Object.keys(adminExists).length > 0){ 
+        localStorage.setItem('admin',true);
+      }else{
+        localStorage.setItem('admin',false);
+      }
+
       alert("Success")
       navigate("/")
     // CHECK IF ERROR
