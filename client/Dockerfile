@@ -24,6 +24,22 @@ COPY package.json ./
 # COPY package-lock.json ./
 COPY yarn.lock ./
 COPY ./ ./
+
+# Clear cahce
 RUN yarn cache clean
+
+# Install packages
 RUN yarn --network-timeout 1000000
-CMD ["yarn", "run", "start"]
+
+# Install `serve` to run the application.
+RUN npm install -g serve
+
+# Uses port which is used by the actual application
+EXPOSE 8080
+
+
+# CMD ["yarn", "run", "start"]
+
+# Run application
+#CMD [ "npm", "start" ]
+CMD serve -s build -l 8080

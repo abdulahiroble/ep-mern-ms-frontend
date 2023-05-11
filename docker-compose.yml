@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   client:
+    image: ep-mern-kea-frontend:v1
     stdin_open: true
     environment:
       - CHOKIDAR_USEPOLLING=true
@@ -20,7 +21,7 @@ services:
       - client_volume:/app/node_modules
       - client_volume:/client:/app
     ports:
-      - "3000:80"
+      - "8080:80"
 
 volumes:
   client_volume:

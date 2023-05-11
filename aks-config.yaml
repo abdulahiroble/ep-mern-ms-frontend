@@ -18,7 +18,7 @@ spec:
         app: ep-mern-kea-frontend
     spec:
       nodeSelector:
-        "beta.kubernetes.io/os": linux
+        "kubernetes.io/os": linux
       containers:
       - name: ep-mern-kea-frontend
         image: azurecontainerlorde.azurecr.io/ep-mern-kea-frontend:v1
