@@ -17,13 +17,14 @@ class LoadUserCollection {
         return result;
     }
 
-    validateSignin = async (token) => {
+    validateSignin = async (token, userId) => {
         const header = {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
               'x-access-token': token
-            }
+            },
+            body: JSON.stringify(userId)
         }
         const result = await fetch(`${url}/api/login/verify`, header)
         const data = await result.json();

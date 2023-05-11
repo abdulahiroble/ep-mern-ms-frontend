@@ -1,8 +1,6 @@
 trigger:
 - main
 
-
-
 jobs:
   - job: test
     pool:

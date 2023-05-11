@@ -20,8 +20,8 @@ const ProfileComponent = (props) => {
         firstname : initialData?.firstname,
         lastname : initialData?.lastname,
         address : initialData?.address,
-        postal : initialData?.postal,
-        number : initialData?.number,
+        postal : initialData?.zipcode,
+        number : initialData?.phone,
         email : initialData?.email
       }
     return(

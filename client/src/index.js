@@ -20,6 +20,7 @@ import AdminUI from 'pages/AdminUI';
 
 //#region ==== OTHER ====
 import {ProtectedRoute} from './services/MiddleWare/ProtectedRoute';
+import {ProtectedAdminRoute} from './services/MiddleWare/ProtectedAdminRoute';
 import AxiosSetup from './config/AxiosSetup'
 import './index.css';
 // #endregion
@@ -46,7 +47,7 @@ ReactDOM.render(
       <Route path="eventdetails/:id" element={<EventDetail />} />
       <Route path="eventdetails3" element={<EventDetail2 />} />
       <Route path="contact" element={<ContactForm />} />
-      <Route path="admin" element={<ProtectedRoute><AdminUI /></ProtectedRoute>} />
+      <Route path="admin" element={<ProtectedAdminRoute><AdminUI /></ProtectedAdminRoute>} />
 
       {/* <BrowserRouter>
         <Routes>

@@ -38,7 +38,11 @@ const RegistrationForm = () => {
 
     const onFinish = async (values) => {
         console.log('Received values of form: ', values);
-        await LoadUserCollection.registerUser(values)
+        const result = await LoadUserCollection.registerUser(values)
+        
+        if(result.data.success){
+            alert("Thank you for creating your registration, please check your email")
+        }
     };
 
     const prefixSelector = (
