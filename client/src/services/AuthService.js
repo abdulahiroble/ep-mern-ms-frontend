@@ -4,7 +4,7 @@ const isLoggedIn = ()=>{
   const isAdmin = localStorage.getItem('admin');
 
   console.log("TOKEN====",token)
-  console.log("ID===",JSON.parse(isAdmin))
+  console.log("ID===",localStorage.getItem('userId'))
   if(!token){
     return {
       authenticated : false,
