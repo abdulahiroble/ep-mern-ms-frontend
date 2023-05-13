@@ -6,7 +6,7 @@ networks:
 
 services:
   search-service:
-    image: ep-mern-kea-frontend:v1
+    image: ep-mern-kea-frontend:latest
     container_name: ep-mern-kea-frontend
     # stdin_open: true
     environment:
@@ -23,4 +23,4 @@ services:
       - /api/node_modules
       - ./api:/app
     ports:
-      - "8080:8080"
+      - "8080:80"

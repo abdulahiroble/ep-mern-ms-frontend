@@ -18,12 +18,12 @@ spec:
         app: ep-mern-kea-frontend
     spec:
       containers:
-      - image: azurecontainerlorde.azurecr.io/ep-mern-kea-frontend:v1
+      - image: azurecontainerlorde.azurecr.io/ep-mern-kea-frontend:v2
         name: ep-mern-kea-frontend
         imagePullPolicy: Always
         resources: {}
         ports:
-          - containerPort: 8080
+          - containerPort: 80
 status: {}
 
 ---
@@ -36,7 +36,8 @@ metadata:
     run: ep-mern-kea-frontend
 spec:
   ports:
-  - port: 8080
+  - port: 80
+    targetPort: 8080
     protocol: TCP
   selector:
     app: ep-mern-kea-frontend
