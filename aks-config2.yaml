@@ -23,7 +23,7 @@ spec:
         imagePullPolicy: Always
         resources: {}
         ports:
-          - containerPort: 8080
+          - containerPort: 80
 status: {}
 
 ---
@@ -36,7 +36,7 @@ metadata:
     run: ep-mern-kea-frontend
 spec:
   ports:
-  - port: 8080
+  - port: 80
     protocol: TCP
   selector:
     app: ep-mern-kea-frontend
