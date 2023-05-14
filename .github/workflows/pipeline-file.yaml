@@ -1,7 +1,7 @@
 name: Server Build & Push
 
 env:
-  IMAGE_NAME: ep-mern-searchservice
+  IMAGE_NAME: ep-mern-kea-frontend
   BRANCH_NAME: ${{ github.ref}}
   BUILD_TAG: ${{ github.sha }}
 
