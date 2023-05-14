@@ -18,7 +18,7 @@ spec:
         app: ep-mern-kea-frontend
     spec:
       containers:
-      - image: azurecontainerlorde.azurecr.io/ep-mern-kea-frontend:v2
+      - image: azurecontainerlorde.azurecr.io/ep-mern-kea-frontend:${BUILD_TAG}
         name: ep-mern-kea-frontend
         imagePullPolicy: Always
         resources: {}
