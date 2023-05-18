@@ -21,7 +21,7 @@ spec:
         "kubernetes.io/os": linux
       containers:
       - name: ep-mern-kea-frontend
-        image: azurecontainerlorde.azurecr.io/ep-mern-kea-front:v9
+        image: azurecontainerlorde.azurecr.io/ep-mern-kea-client:v12
         ports:
         - containerPort: 8080
         resources:
