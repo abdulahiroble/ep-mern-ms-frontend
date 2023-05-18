@@ -17,3 +17,11 @@ spec:
             name: ep-mern-kea-frontend
             port:
               number: 80
+      paths:
+      - path: /searservice/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: ep-mern-searchservice
+            port:
+              number: 3002
