@@ -18,7 +18,6 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
-        env:
 
 ---
 
@@ -34,23 +33,3 @@ spec:
   - port: 80
   selector:
     app: ep-mern-kea-frontend
-
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name:  ep-mern-api
-  annotations:
-    kubernetes.io/ingress.class: addon-http-application-routing
-spec:
-  rules:
-  - host:  ep-mern-kea-frontend.k8s-test-2-dns-czux3v9j.hcp.swedencentral.azmk8s.io
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service: 
-            name: ep-mern-api
-            port: 
-              number: 8080
