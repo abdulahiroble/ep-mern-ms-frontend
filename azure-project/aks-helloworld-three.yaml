@@ -37,7 +37,7 @@ kind: Ingress
 metadata:
   name: aks-helloworld
   annotations:
-    kubernetes.io/ingress.class: managed-by=aks-app-routing-operator
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
   - http:
