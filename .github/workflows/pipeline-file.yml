@@ -48,8 +48,8 @@ jobs:
 
       - name: Push Docker image to Azure Container Registry
         run: |
-          docker tag ${{ env.IMAGE_NAME }}:latest ${{ secrets.ACR_ENDPOINT }}/${{ env.IMAGE_NAME }}:${{ env.BUILD_TAG }}
-          docker push ${{ secrets.ACR_ENDPOINT }}/${{ env.IMAGE_NAME }}:${{ env.BUILD_TAG }}
+          docker tag ${{ env.IMAGE_NAME }}:latest ${{ secrets.ACR_ENDPOINT }}/${{ env.IMAGE_NAME }}:v9
+          docker push ${{ secrets.ACR_ENDPOINT }}/${{ env.IMAGE_NAME }}:v9
 
       - name: Apply Kubernetes manifest file
         run: |
