@@ -47,7 +47,7 @@ jobs:
 
       - name: Push Docker image to Azure Container Registry
         run: |
-          docker tag ep-mern-kea-front:latest ${{ secrets.ACR_ENDPOINT }}/ep-mern-kea-client:v12
+          docker tag ep-mern-kea-client:latest ${{ secrets.ACR_ENDPOINT }}/ep-mern-kea-client:v12
           docker push ${{ secrets.ACR_ENDPOINT }}/ep-mern-kea-client:v12
 
       - name: Apply Kubernetes manifest file
