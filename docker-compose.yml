@@ -1,13 +1,9 @@
-version: '3'
-
-networks: 
-  ep-mern: 
-    external: true
+version: '3.8'
 
 services:
-  search-service:
-    image: ep-mern-kea-frontend:latest
-    container_name: ep-mern-kea-frontend
+  client:
+    image: ep-mern-kea-client:v6
+    container_name: ep-mern-kea-client
     # stdin_open: true
     environment:
       - CHOKIDAR_USEPOLLING=true
@@ -16,6 +12,9 @@ services:
       - REACT_APP_ENVIRONMENT=prod
       - REACT_APP_SECRET_CODE=123
 
+      - REACT_APP_APIKEY_GOOGLE_MAPS=AIzaSyCywB8YAGzfsCy72UJ6JaOJYIzTr84P-XA
+
+      - REACT_APP_SECRET_KEY=AAJ-AWESOME-KEY
     build:
       dockerfile: Dockerfile
       context: ./client
