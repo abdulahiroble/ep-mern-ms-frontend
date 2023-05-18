@@ -19,8 +19,5 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./client
-    volumes:
-      - /api/node_modules
-      - ./api:/app
     ports:
       - "8080:80"

@@ -1,35 +1,43 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ep-mern-kea-frontend  
+  name: ep-mern-kea-frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: ep-mern-kea-frontend
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5 
   template:
     metadata:
       labels:
         app: ep-mern-kea-frontend
     spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
       containers:
       - name: ep-mern-kea-frontend
         image: azurecontainerlorde.azurecr.io/ep-mern-kea-frontend:${BUILD_TAG}
-        imagePullPolicy: Always
         ports:
-        - containerPort: 80
-
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
   name: ep-mern-kea-frontend
-  labels:
-    run: ep-mern-kea-frontend
 spec:
   type: ClusterIP
   ports:
   - port: 80
+    targetPort: 8080
   selector:
     app: ep-mern-kea-frontend
