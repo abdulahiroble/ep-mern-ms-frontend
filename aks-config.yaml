@@ -1,24 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  creationTimestamp: null
+  labels:
+    app: ep-mern-kea-frontend
   name: ep-mern-kea-frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: ep-mern-kea-frontend
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
-  minReadySeconds: 5 
+  strategy: {}
   template:
     metadata:
+      creationTimestamp: null
       labels:
         app: ep-mern-kea-frontend
     spec:
-      nodeSelector:
-        "kubernetes.io/os": linux
       containers:
       - name: ep-mern-kea-frontend
         image: azurecontainerlorde.azurecr.io/ep-mern-kea-front:v6
@@ -30,10 +28,13 @@ spec:
           limits:
             cpu: 500m
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
   name: ep-mern-kea-frontend
+  labels:
+    run: ep-mern-kea-frontend
 spec:
   type: ClusterIP
   ports:
@@ -42,3 +43,4 @@ spec:
     protocol: TCP
   selector:
     app: ep-mern-kea-frontend
+  type: LoadBalancer
