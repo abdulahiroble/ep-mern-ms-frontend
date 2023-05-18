@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ep-mern-kea-frontend  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ep-mern-kea-frontend
+  template:
+    metadata:
+      labels:
+        app: ep-mern-kea-frontend
+    spec:
+      containers:
+      - name: ep-mern-kea-frontend
+        image: azurecontainerlorde.azurecr.io/ep-mern-kea-frontend:${BUILD_TAG}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        env:
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ep-mern-kea-frontend
+  labels:
+    run: ep-mern-kea-frontend
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: ep-mern-kea-frontend
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name:  ep-mern-api
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+  - host:  ep-mern-kea-frontend.k8s-test-2-dns-czux3v9j.hcp.swedencentral.azmk8s.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service: 
+            name: ep-mern-api
+            port: 
+              number: 8080
