@@ -43,7 +43,7 @@ jobs:
       #     docker images
 
       # - name: test
-        # run: source environment.sh envsubst < aks-config.yml.template > aks-config.yaml |
+        # run: source environment.sh envsubst < aks-config.yml.template > aks-config.yml |
           # cat aks-config.yml
 
       - name: Push Docker image to Azure Container Registry
@@ -54,4 +54,5 @@ jobs:
       - name: Apply Kubernetes manifest file
         run: |
           export BUILD_TAG=${{ env.BUILD_TAG }}
-           envsubst < manifests/templates/aks-config.yml | kubectl apply -f - -n default --kubeconfig=config.yaml
+           envsubst < manifests/templates/aks-config.yml | kubectl apply -f - -n default --kubeconfig=config.yml
+           envsubst < manifests/templates/ingress-config.yml | kubectl apply -f - -n default --kubeconfig=config.yml
