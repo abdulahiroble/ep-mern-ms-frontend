@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   client:
-    image: ep-mern-kea-front:v6
+    image: ep-mern-kea-front:latest
     container_name: ep-mern-kea-front
     # stdin_open: true
     environment:
