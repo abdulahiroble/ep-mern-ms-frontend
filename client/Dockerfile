@@ -17,8 +17,7 @@
 #EXPOSE 3000
 # Start the app
 #CMD [ "yarn", "run", "start" ]
-
-FROM node:alpine
+FROM --platform=linux/amd64 node:alpine
 WORKDIR /app
 COPY package.json ./
 # COPY package-lock.json ./
