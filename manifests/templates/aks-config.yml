@@ -35,7 +35,7 @@ kind: Service
 metadata:
   name: ep-mern-kea-frontend
 spec:
-  type: ClusterIP
+  type: Loadbalancer
   ports:
   - port: 80
     targetPort: 8080
