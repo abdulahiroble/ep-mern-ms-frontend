@@ -45,10 +45,10 @@ jobs:
       # - name: test
       #   run: cat config.yml
 
-      # - name: Push Docker image to Azure Container Registry
-      #   run: |
-      #     docker tag ep-mern-kea-client:latest ${{ secrets.ACR_ENDPOINT }}/ep-mern-kea-client:${BUILD_TAG}
-      #     docker push ${{ secrets.ACR_ENDPOINT }}/ep-mern-kea-client:${BUILD_TAG}
+      - name: Push Docker image to Azure Container Registry
+        run: |
+          docker tag ep-mern-kea-client:latest ${{ secrets.ACR_ENDPOINT }}/ep-mern-kea-client:${BUILD_TAG}
+          docker push ${{ secrets.ACR_ENDPOINT }}/ep-mern-kea-client:${BUILD_TAG}
 
       - name: Apply Kubernetes manifest file
         run: |
