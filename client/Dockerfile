@@ -48,7 +48,7 @@
 FROM node:14-alpine AS build
 
 # Set working directory
-WORKDIR /app
+WORKDIR /client
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
