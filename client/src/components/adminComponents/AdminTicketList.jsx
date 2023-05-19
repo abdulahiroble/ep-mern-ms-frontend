@@ -75,7 +75,7 @@ const AdminTicketList = () => {
             name: 'ticket',
             render: (_, ticket) => (
                 <Space size="middle">
-                    <PopOverModal showTicket={ticket.ticket} />
+                    <PopOverModal showTicket={ticket} />
                 </Space>
             ),
         },
@@ -88,7 +88,7 @@ const AdminTicketList = () => {
                 name: item._fields[0].properties.firstname,
                 email: item._fields[0].properties.email,
                 statuses: ['Replied'],
-                ticket: item._fields[0].properties.msg
+                ticket: item._fields[0].properties
             })
         })
         return ticketData;
