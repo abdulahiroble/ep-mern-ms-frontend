@@ -23,7 +23,7 @@ spec:
       - name: ep-mern-kea-frontend
         image: azurecontainerlorde.azurecr.io/ep-mern-kea-client:${BUILD_TAG}
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         resources:
           requests:
             cpu: 250m
@@ -38,7 +38,7 @@ spec:
   type: ClusterIP
   ports:
     - port: 80
-      targetPort: 8080
+      targetPort: 80
 
   selector:
     app: ep-mern-kea-frontend
