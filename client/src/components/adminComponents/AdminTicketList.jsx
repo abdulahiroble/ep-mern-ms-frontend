@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Space, Table, Tag } from 'antd';
 import LoadTicketCollection from 'services/collections/LoadTicketCollection';
+import PopOverModal from 'components/Modal';
 
 
 const AdminTicketList = () => {
@@ -35,7 +36,6 @@ const AdminTicketList = () => {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
-            render: (text) => <a>{text}</a>,
         },
         {
             title: 'Email',
@@ -70,12 +70,12 @@ const AdminTicketList = () => {
             ),
         },
         {
-            title: 'Action',
-            key: 'action',
-            render: (_, record) => (
+            title: 'Ticket',
+            key: 'ticket',
+            name: 'ticket',
+            render: (_, ticket) => (
                 <Space size="middle">
-                    <a>Svar</a>
-                    <a>Slet</a>
+                    <PopOverModal showTicket={ticket.ticket} />
                 </Space>
             ),
         },
@@ -88,14 +88,11 @@ const AdminTicketList = () => {
                 name: item._fields[0].properties.firstname,
                 email: item._fields[0].properties.email,
                 statuses: ['Replied'],
-                msg: item._fields[0].properties.msg
+                ticket: item._fields[0].properties.msg
             })
         })
         return ticketData;
     }
-
-
-    console.log(data2())
 
     const data = [
         {
