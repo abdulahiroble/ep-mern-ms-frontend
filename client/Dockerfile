@@ -40,5 +40,6 @@ EXPOSE 8080
 # CMD ["yarn", "run", "start"]
 
 # Run application
-CMD [ "npm", "start" ]
+# CMD [ "npm", "start" ]
+CMD npm run prod
 # CMD serve -s build -l 8080
