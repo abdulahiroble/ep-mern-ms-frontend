@@ -21,7 +21,7 @@ spec:
         "kubernetes.io/os": linux
       containers:
       - name: ep-mern-kea-frontend
-        image: azurecontainerlorde.azurecr.io/ep-mern-kea-client:${BUILD_TAG}
+        image: azurecontainerlorde.azurecr.io/ep-mern-kea-client:377de30b7e213fb48cc5ae54b5bce30f1fcde2d5
         ports:
         - containerPort: 8080
         resources:
@@ -35,9 +35,10 @@ kind: Service
 metadata:
   name: ep-mern-kea-frontend
 spec:
+  type: ClusterIP
   ports:
-  - port: 80
-    targetPort: 8080
-    protocol: TCP
+    - port: 80
+      targetPort: 8080
+
   selector:
     app: ep-mern-kea-frontend

@@ -41,5 +41,5 @@ EXPOSE 8080
 
 # Run application
 # CMD [ "npm", "start" ]
-CMD npm run prod
-# CMD serve -s build -l 8080
+# CMD npm run prod
+CMD serve -s build -l 8080
