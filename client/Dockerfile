@@ -48,19 +48,19 @@
 FROM node:14-alpine AS build
 
 # Set working directory
-WORKDIR /client
+WORKDIR /app
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+RUN yarn install
 
 # Copy application files
 COPY . .
 
 # Build the React app
-RUN npm run build
+RUN yarn run build
 
 # Production-ready image
 FROM nginx:alpine
