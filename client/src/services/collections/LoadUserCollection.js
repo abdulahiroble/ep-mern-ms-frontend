@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let url = process.env.REACT_APP_PROD_URL;
+let url = process.env.REACT_APP_DEVELOPMENT_AUTH_URL;
 if (process.env.REACT_APP_ENVIRONMENT != 'prod') {
     url = process.env.REACT_APP_DEVELOPMENT_AUTH_URL;
 }
@@ -11,7 +11,7 @@ class LoadUserCollection {
     authenticateUser = async (data) => {
         data.key = process.env.REACT_APP_SECRET_KEY;
         console.log(data)
-        const result = await axios.post(`${url}/api/login`, data)
+        const result = await axios.post(`${url}/login`, data)
         console.log("RESULT=====", result)
         
         return result;
@@ -27,7 +27,7 @@ class LoadUserCollection {
             },
             body: JSON.stringify({userId:userId})
         }
-        const result = await fetch(`${url}/api/login/verify`, header)
+        const result = await fetch(`${url}/login/verify`, header)
         const data = await result.json();
 
         
@@ -35,14 +35,14 @@ class LoadUserCollection {
     }
 
     getUserProfile = async (id) => {
-        const result = await axios.get(`${url}/api/users/${id}`)
+        const result = await axios.get(`${url}/users/${id}`)
         return result;
     }
 
     updateProfile = async (data) => {
         console.log("URL===",url)
         console.log("body===",data)
-        const result = await axios.put(`${url}/api/user`, data)
+        const result = await axios.put(`${url}/user`, data)
         console.log("RESULT=====", result)
 
         return result;
@@ -50,7 +50,7 @@ class LoadUserCollection {
 
     registerUser = async (data) => {
         console.log("DATA===",data)
-        const result = await axios.post(`${url}/api/users`, data)
+        const result = await axios.post(`${url}/users`, data)
         console.log("RESULT=====", result)
 
         return result;
