@@ -1,3 +1,16 @@
+# API Endpoints & Github URL
+
+## API
+http://20.240.18.244/api
+## Auth Service
+https://github.com/AndreasP-92/ep-mern-ms-authservice
+http://20.240.18.244/ms/auth
+## Search Service
+https://github.com/AndreasP-92/ep-mern-ms-search
+http://20.240.18.244/ms/search
+## Ticket Service
+https://github.com/AndreasP-92/ep-mern-ms-ticketservice
+http://20.240.18.244/ms/ticket
 # env file info
 
 REACT_APP_DEVELOPMENT_URL = http://localhost:8081
