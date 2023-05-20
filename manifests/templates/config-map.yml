@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: client-config-map
+data:
+  REACT_APP_ENVIRONMENT: "prod"
+  REACT_APP_PRODUCTION_AUTH_URL: "http://20.240.18.244/ms/auth"
+  REACT_APP_PRODUCTION_SEARCH_SERVICE_URL: "http://20.240.18.244/ms/search"
+  REACT_APP_PRODUCTION_API_URL: "http://20.240.18.244/api"
+
+  REACT_APP_SECRET_CODE: "123"
+
+  REACT_APP_APIKEY_GOOGLE_MAPS: "AIzaSyCywB8YAGzfsCy72UJ6JaOJYIzTr84P-XA"
+
+  REACT_APP_SECRET_KEY : " AAJ-AWESOME-KEY"
+
+
