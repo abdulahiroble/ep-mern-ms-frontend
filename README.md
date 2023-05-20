@@ -1,7 +1,7 @@
 # Step by Step Guide
 This is a step by step guide on how to setup each microservice and the frontend.
 
-## Frontend
+## 1. Frontend service
 
 ### 1. Cd into the frontend folder
 
@@ -22,19 +22,75 @@ npm install
 npm start
 ```
 
-## Auth Service
+## 2. Auth Service
 
-### 1. Install dependencies
+### 1. Cd into the auth service folder
+
+```bash
+cd microservice
+```
+
+### 2. Install dependencies
 
 ```bash
 
 npm install
 ```
 
-### 2. Start the auth service
+### 3. Start the auth service
 
 ```bash
 
+npm start
+```
+
+## 3. Search Service
+
+### 1. Cd into the search service folder
+
+```bash
+cd search-microservice
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the search service
+
+```bash
+npm start
+```
+
+## 4. Ticket Service
+
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Start the ticket service
+
+```bash
+npm start
+```
+
+## 5. Mail Service
+
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Start the mail service
+
+```bash
+npm start
+```
 
 
 http://20.240.18.244/
