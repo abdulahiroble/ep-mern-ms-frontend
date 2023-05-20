@@ -1,9 +1,42 @@
 # Step by Step Guide
-asd
-
-# Endpoints & Github URL
+This is a step by step guide on how to setup each microservice and the frontend.
 
 ## Frontend
+
+### 1. Cd into the frontend folder
+
+```bash
+cd client
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Start the frontend
+
+```bash
+
+npm start
+```
+
+## Auth Service
+
+### 1. Install dependencies
+
+```bash
+
+npm install
+```
+
+### 2. Start the auth service
+
+```bash
+
+
+
 http://20.240.18.244/
 ## API
 https://github.com/AndreasP-92/ep-mern-api<br>
