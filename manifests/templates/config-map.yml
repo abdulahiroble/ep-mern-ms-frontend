@@ -3,6 +3,7 @@ kind: ConfigMap
 metadata:
   name: client-config-map
 data:
+  REACT_APP_ENVIRONMENT: "prod"
   REACT_APP_PRODUCTION_AUTH_URL: "http://20.240.18.244/ms/auth"
   REACT_APP_PRODUCTION_SEARCH_SERVICE_URL: "http://20.240.18.244/ms/search"
   REACT_APP_PRODUCTION_API_URL: "http://20.240.18.244/api"
