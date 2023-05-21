@@ -47,8 +47,8 @@ jobs:
   # # echo "${{ env.REACT_APP_APIKEY_GOOGLE_MAPS }}" > .env"
   # # echo "${{ env.REACT_APP_SECRET_KEY }}" > .env"
 
-  #     - name: Build image
-  #       run: docker compose -f docker-compose.yml build
+      - name: Build image
+        run: docker compose -f docker-compose.yml build
 
       # - name: echo env
       #   run: echo ${{ env.BUILD_TAG }}
