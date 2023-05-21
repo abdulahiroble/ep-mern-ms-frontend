@@ -1,16 +1,17 @@
 import axios from 'axios';
 
 
-let url = process.env.REACT_APP_DEVELOPMENT_SEARCH_SERVICE_URL;
+let url = process.env.REACT_APP_PRODUCTION_SEARCH_SERVICE_URL;
 if (process.env.REACT_APP_ENVIRONMENT != 'prod') {
-    url = process.env.REACT_APP_DEVELOPMENT_URL;
+    url = process.env.REACT_APP_DEVELOPMENT_SEARCH_SERVICE_URL;
 }
+console.log("ENVIRONMENT===",url)
 class LoadEventCollections {
     searchEvent = async (input) => {
         const data = {
             'zipcode': input
         }
-        const result = await axios.post(`${url}/api/searchEvents`, data);
+        const result = await axios.post(`${url}/searchEvents`, data);
 
         return result
     }
@@ -19,18 +20,18 @@ class LoadEventCollections {
         const data = {
             'page': input
         }
-        const result = await axios.post(`${url}/api/nextEventPage`, data);
+        const result = await axios.post(`${url}/nextEventPage`, data);
         return result
     }
 
     getAllEvents = async () => {
-        const result = await axios.get(`${url}/api/allEvents`);
+        const result = await axios.get(`${url}/allEvents`);
 
         return result
     }
 
     getAllEventsCategoryById = async () => {
-        const result = await axios.get(`${url}/api/allEvents`);
+        const result = await axios.get(`${url}/allEvents`);
 
         const duplicate = result.data._embedded.events.map((elm) => elm.classifications[0].segment.id)
 
@@ -44,12 +45,12 @@ class LoadEventCollections {
         const data = {
             'category': input
         }
-        const result = await axios.post(`${url}/api/eventsByCategory`, data);
+        const result = await axios.post(`${url}/eventsByCategory`, data);
         return result
     }
 
     fetchEvent = async (id) => {
-        const result = await axios.get(`${url}/api/fetchEvent/${id}`)
+        const result = await axios.get(`${url}/fetchEvent/${id}`)
         return result.data;
     }
 }

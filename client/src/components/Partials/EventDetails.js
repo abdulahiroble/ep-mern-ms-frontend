@@ -7,8 +7,9 @@ import GoogleMap from '../GoogleMap'
 
 export default function EventDetailsPartial({data}){
     // console.log("PROPS===",data.sales.public.startDateTime.splice(0,10))
-    const startDate = data.sales.public.startDateTime;
-    const priceRange = data.priceRanges.length;
+    // const startDate = data.sales.public.startDateTime;
+    // const priceRange = data.priceRanges.length;
+    
     console.log("PRICE RANGE ==",data.images.length)
       return(
         <Col>
@@ -27,7 +28,7 @@ export default function EventDetailsPartial({data}){
               <Col span={24}>Genre {data.classifications[0].segment.name}</Col>
               <Col span={24}>Billetsalg starter d. {data.sales.public.startDateTime.substring(0,10)}</Col>
               <Col span={24}>Billetsalg slutter d. {data.sales.public.endDateTime.substring(0,10)}</Col>
-              <Col span={24}>Piser fra {data.priceRanges[0].min}.- til {data.priceRanges[1].max} .-</Col>
+              {/* <Col span={24}>Piser fra {data.priceRanges[0].min}.- til {data.priceRanges[1].max} .-</Col> */}
               <Col span={24}><a href={data.promoter.name}>Køb biletter</a></Col>
             </Col>
             <Col span={12} type="flex" align="middle" style={{backgroundColor:"yellow",padding:"3%"}}>
