@@ -56,6 +56,8 @@ COPY package*.json ./
 # Install dependencies
 RUN yarn install
 
+RUN yarn run test
+
 # Copy application files
 COPY . .
 
