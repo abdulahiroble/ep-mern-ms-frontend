@@ -25,12 +25,17 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      # - name: Create env file
-      #   run: |
-      #     touch .env
-      #     echo "${{ secrets.SERVER_ENV_PROD }}" > .env
-      #     echo "BUILD_TAG=${{ env.BUILD_TAG }}" > .env
-      #     cat .env
+      - name: Create env file
+        run: |
+          touch .env
+          echo "${{ REACT_APP_ENVIRONMENT=prod }}" > .env
+          echo "${{ REACT_APP_PRODUCTION_AUTH_URL=http://20.240.18.244/ms/auth }}" > .env
+          echo "${{ REACT_APP_PRODUCTION_SEARCH_SERVICE_URL=http://20.240.18.244/ms/search }}" > .env
+          echo "${{ REACT_APP_PRODUCTION_API_URL=http://20.240.18.244/api }}" > .env
+          echo "${{ REACT_APP_SECRET_CODE=123 }}" > .env
+          echo "${{ REACT_APP_APIKEY_GOOGLE_MAPS=AIzaSyCywB8YAGzfsCy72UJ6JaOJYIzTr84P-XA }}" > .env
+          echo "${{ REACT_APP_SECRET_KEY = AAJ-AWESOME-KEY }}" > .env
+          cat .env
 
       - name: Build image
         run: docker compose -f docker-compose.yml build
