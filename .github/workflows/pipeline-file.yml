@@ -50,6 +50,7 @@ jobs:
       - name: add prod environment
         run: |
         export REACT_APP_ENVIRONMENT: ${env.REACT_APP_ENVIRONMENT}
+        envsubst < client/.env.local
 
       - name: Build image
         run: docker compose -f docker-compose.yml build
