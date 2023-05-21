@@ -40,11 +40,11 @@ jobs:
           touch .env
           echo "${{ env.REACT_APP_ENVIRONMENT }}" > .env
           echo "${{ env.REACT_APP_PRODUCTION_AUTH_URL }}" > .env"
-          echo "${{ env.REACT_APP_PRODUCTION_SEARCH_SERVICE_URL }}" > .env"
-          echo "${{ env.REACT_APP_PRODUCTION_API_URL }}" > .env"
-          echo "${{ env.REACT_APP_SECRET_CODE }}" > .env"
-          echo "${{ env.REACT_APP_APIKEY_GOOGLE_MAPS }}" > .env"
-          echo "${{ env.REACT_APP_SECRET_KEY }}" > .env"
+  # echo "${{ env.REACT_APP_PRODUCTION_SEARCH_SERVICE_URL }}" > .env"
+  # echo "${{ env.REACT_APP_PRODUCTION_API_URL }}" > .env"
+  # echo "${{ env.REACT_APP_SECRET_CODE }}" > .env"
+  # echo "${{ env.REACT_APP_APIKEY_GOOGLE_MAPS }}" > .env"
+  # echo "${{ env.REACT_APP_SECRET_KEY }}" > .env"
           cat .env
 
       - name: Build image
