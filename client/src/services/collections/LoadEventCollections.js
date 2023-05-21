@@ -5,7 +5,9 @@ let url = process.env.REACT_APP_PRODUCTION_SEARCH_SERVICE_URL;
 if (process.env.REACT_APP_ENVIRONMENT != 'prod') {
     url = process.env.REACT_APP_DEVELOPMENT_SEARCH_SERVICE_URL;
 }
-console.log("ENVIRONMENT===",url)
+
+console.log("ENVIRONMENT===",REACT_APP_ENVIRONMENT)
+console.log("URL===",url)
 class LoadEventCollections {
     searchEvent = async (input) => {
         const data = {
