@@ -1,10 +1,14 @@
 import axios from "axios";
 
-let url = process.env.REACT_APP_DEVELOPMENT_AUTH_URL;
-if (process.env.REACT_APP_ENVIRONMENT_PROD != 'true') {
+let url = process.env.REACT_APP_PRODUCTION_AUTH_URL;
+if (process.env.REACT_APP_ENVIRONMENT_PROD == "false") {
+    console.log("hello?")
     url = process.env.REACT_APP_DEVELOPMENT_AUTH_URL;
 }
+console.log(process.env.REACT_APP_ENVIRONMENT_PROD != true)
 
+console.log("ENVIRONMENT===",process.env.REACT_APP_ENVIRONMENT)
+console.log("URL===",url)
 class LoadUserCollection {
 
 

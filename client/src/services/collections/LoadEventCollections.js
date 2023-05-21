@@ -2,12 +2,11 @@ import axios from 'axios';
 
 
 let url = process.env.REACT_APP_PRODUCTION_SEARCH_SERVICE_URL;
-if (process.env.REACT_APP_ENVIRONMENT_PROD != 'true') {
+if (process.env.REACT_APP_ENVIRONMENT_PROD == "false") {
     url = process.env.REACT_APP_DEVELOPMENT_SEARCH_SERVICE_URL;
 }
 
-console.log("ENVIRONMENT===",process.env.REACT_APP_ENVIRONMENT)
-console.log("URL===",url)
+
 class LoadEventCollections {
     searchEvent = async (input) => {
         const data = {
