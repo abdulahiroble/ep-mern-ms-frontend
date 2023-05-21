@@ -47,6 +47,10 @@ jobs:
   # # echo "${{ env.REACT_APP_APIKEY_GOOGLE_MAPS }}" > .env"
   # # echo "${{ env.REACT_APP_SECRET_KEY }}" > .env"
 
+      - name: add prod environment
+        run: |
+        export REACT_APP_ENVIRONMENT: ${env.REACT_APP_ENVIRONMENT}
+
       - name: Build image
         run: docker compose -f docker-compose.yml build
 

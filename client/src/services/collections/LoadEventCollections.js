@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 let url = process.env.REACT_APP_PRODUCTION_SEARCH_SERVICE_URL;
-if (process.env.REACT_APP_ENVIRONMENT != 'prod') {
+if (process.env.REACT_APP_ENVIRONMENT_PROD != 'true') {
     url = process.env.REACT_APP_DEVELOPMENT_SEARCH_SERVICE_URL;
 }
 
