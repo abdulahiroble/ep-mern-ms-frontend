@@ -14,7 +14,6 @@ class LoadUserCollection {
     authenticateUser = async (data) => {
         data.key = process.env.REACT_APP_SECRET_KEY;
         console.log("loginData===",data)
-        data.key = "AAJ-AWESOME-KEY"
         const result = await axios.post(`${url}/login`, data)
         console.log("RESULT=====", result)
         
@@ -22,9 +21,6 @@ class LoadUserCollection {
     }
 
     validateSignin = async (token, userId) => {
-
-        console.log("USERID=====", userId)
-        console.log("USERID=====", token)
         const header = {
             method: 'POST',
             headers: {
@@ -46,10 +42,7 @@ class LoadUserCollection {
     }
 
     updateProfile = async (data) => {
-        console.log("URL===",url)
-        console.log("body===",data)
         const result = await axios.put(`${url}/user`, data)
-        console.log("RESULT=====", result)
 
         return result;
     }
