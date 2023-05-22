@@ -13,17 +13,17 @@ export const ProtectedAdminRoute = ({children}) => {
             console.log("SIGNEDIN====",signedIn)
             if(!signedIn.veryfied){
                 console.log("NOP")
-                return Navigate('/login')
+                // return Navigate('/login')
             }
 
             if(!signedIn.isAdmin){
-                return Navigate('/login')
+                // return Navigate('/login')
             }
         }
         function isAdmin(){
             const isAdmin = localStorage.getItem('admin') || null;
             if(!isAdmin){
-                return Navigate('/login')
+                // return Navigate('/login')
             }
         }
         isAdmin();

@@ -59,6 +59,6 @@ RUN yarn install
 # Copy application files
 COPY . .
 
-EXPOSE 80
+EXPOSE 3000
 # Development environment
 CMD ["yarn", "start"]

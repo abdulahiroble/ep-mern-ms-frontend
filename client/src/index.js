@@ -61,10 +61,7 @@ ReactDOM.render(
 
       <Route
         path="profile/:id"
-        element={
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
+        element={<ProtectedRoute><Profile /></ProtectedRoute>
         }
       />
       <Route path="/Registration" element={<Registration />} />
