@@ -16,6 +16,7 @@ import Registration from './pages/Registration';
 import CategoryDetails from './components/Partials/CategoryDetails';
 import Login from './pages/Login';
 import AdminUI from 'pages/AdminUI';
+import UserActivate from 'pages/UserActivate';
 // #endregion
 
 //#region ==== OTHER ====
@@ -47,6 +48,8 @@ ReactDOM.render(
       <Route path="eventdetails/:id" element={<EventDetail />} />
       <Route path="eventdetails3" element={<EventDetail2 />} />
       <Route path="contact" element={<ContactForm />} />
+      <Route path="contact/{id}" element={<ContactForm />} />
+      <Route path="actived/:id" element={<UserActivate />} />
       <Route path="admin" element={<ProtectedAdminRoute><AdminUI /></ProtectedAdminRoute>} />
 
       {/* <BrowserRouter>
