@@ -49,8 +49,7 @@ ReactDOM.render(
       <Route path="eventdetails/:id" element={<EventDetail />} />
       <Route path="eventdetails3" element={<EventDetail2 />} />
       <Route path="contact" element={<ContactForm />} />
-      <Route path="contact/{id}" element={<ContactForm />} />
-      <Route path="actived/:id" element={<UserActivate />} />
+      <Route path="activate/:token" element={<UserActivate />} />
       <Route path="admin" element={<ProtectedAdminRoute><AdminUI /></ProtectedAdminRoute>} />
       <Route path="admin/logs" element={<ProtectedAdminRoute><AdminLog/></ProtectedAdminRoute>} />
 

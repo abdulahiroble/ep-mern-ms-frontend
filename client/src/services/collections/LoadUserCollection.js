@@ -7,7 +7,6 @@ if (process.env.REACT_APP_ENVIRONMENT_PROD == "false") {
 }
 console.log(process.env.REACT_APP_ENVIRONMENT_PROD != true)
 
-console.log("ENVIRONMENT===",process.env.REACT_APP_ENVIRONMENT)
 console.log("URL===",url)
 class LoadUserCollection {
 
@@ -55,6 +54,14 @@ class LoadUserCollection {
     registerUser = async (data) => {
         console.log("DATA===",data)
         const result = await axios.post(`${url}/users`, data)
+        console.log("RESULT=====", result)
+
+        return result;
+    }
+
+    verifyAccount = async (data) => {
+        console.log("DATA===",data)
+        const result = await axios.get(`${url}/verify/account/${data.token}`)
         console.log("RESULT=====", result)
 
         return result;

@@ -17,7 +17,13 @@ const UserActivate = () => {
 
     const params = useParams();
     console.log(params)
+    useEffect(() =>{
+        async function loadData(){
+            ApiContext.LoadUserCollection.verifyAccount(params)
+        }
 
+        loadData();
+    },[0])
 
     return (
         <Col>
