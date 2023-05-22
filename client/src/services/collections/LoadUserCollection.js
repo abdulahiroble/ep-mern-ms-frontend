@@ -21,7 +21,9 @@ class LoadUserCollection {
     }
 
     validateSignin = async (token, userId) => {
+
         console.log("USERID=====", userId)
+        console.log("USERID=====", token)
         const header = {
             method: 'POST',
             headers: {
