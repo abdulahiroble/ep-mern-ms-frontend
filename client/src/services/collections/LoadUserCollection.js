@@ -7,13 +7,13 @@ if (process.env.REACT_APP_ENVIRONMENT_PROD == "false") {
 }
 console.log(process.env.REACT_APP_ENVIRONMENT_PROD != true)
 
-console.log("URL===",url)
+console.log("ADMINURL===",url)
 class LoadUserCollection {
 
 
     authenticateUser = async (data) => {
         data.key = process.env.REACT_APP_SECRET_KEY;
-        console.log(data)
+        console.log("loginData===",data)
         const result = await axios.post(`${url}/login`, data)
         console.log("RESULT=====", result)
         

@@ -27,7 +27,7 @@ export default function App() {
 
     async function loadData() {
       setInitialData(await LoadEventCollections.getAllEvents());
-      setSliderImages(await LoadPropertyCollection.getSliderImages());
+      // setSliderImages(await LoadPropertyCollection.getSliderImages());
     }
 
     const loadCategory = async () => {
@@ -65,7 +65,7 @@ export default function App() {
         <h1>Event Planner</h1>
       </Col>
       {/* === SLIDER CAROUSEL === */}
-      <SliderComponent dataResult={sliderImages} />
+      {/* <SliderComponent dataResult={sliderImages} /> */}
 
       <Row justify="center">
         <Col span={16} style={{marginTop: "5%"}}>
