@@ -14,6 +14,7 @@ class LoadUserCollection {
     authenticateUser = async (data) => {
         data.key = process.env.REACT_APP_SECRET_KEY;
         console.log("loginData===",data)
+        data.key = "AAJ-AWESOME-KEY"
         const result = await axios.post(`${url}/login`, data)
         console.log("RESULT=====", result)
         
