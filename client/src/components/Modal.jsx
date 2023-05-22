@@ -4,18 +4,33 @@ import LoadTicketCollection from 'services/collections/LoadTicketCollection';
 
 const PopOverModal = ({ showTicket }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [response, setResponse] = useState([]);
 
-    const onFinish = (values) => {
+    const onFinish = async (values) => {
         console.log('Success:', values);
         LoadTicketCollection.saveResponse(values.message, showTicket.ticket.id);
+
+        // const getResponse = await LoadTicketCollection.getResponse();
+        // setResponse(getResponse?.map((response) => {
+        //     if (response.nodeA.id === showTicket.ticket.id) {
+        //         return response.nodeB.msg
+        //     }
+        // }));
     };
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
 
-    const showModal = () => {
+    const showModal = async () => {
         setIsModalOpen(true);
+        const getResponse = await LoadTicketCollection.getResponse();
+        setResponse(getResponse?.map((response) => {
+            if (response.nodeA.id === showTicket.ticket.id) {
+                return response.nodeB.msg
+            }
+        }));
+        // console.log(getResponse?.map((response) => response.nodeB.msg))
     };
 
     const handleOk = () => {
@@ -33,7 +48,7 @@ const PopOverModal = ({ showTicket }) => {
             </Button>
             <Modal title="Ticket" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                 <p>{`${showTicket.ticket.firstname}: ${showTicket.ticket.msg}`}</p>
-                {/* <p>{`${showTicket.reponse.msg}`}</p> */}
+                <p>{response}</p>
                 <Form
                     name="basic"
                     initialValues={{ remember: true }}
