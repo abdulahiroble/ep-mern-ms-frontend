@@ -2,12 +2,30 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ep-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      error_page 404 = /index.html;
 spec:
   ingressClassName: nginx
   rules:
   - http:
       paths:
       - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ep-mern-kea-frontend
+            port:
+              number: 80
+      - path: /eventdetails/([^/]+)
+        pathType: Prefix
+        backend:
+          service:
+            name: ep-mern-kea-frontend
+            port:
+              number: 80
+      - path: /eventdetails/Z698xZC4Z17ftAy
         pathType: Prefix
         backend:
           service:

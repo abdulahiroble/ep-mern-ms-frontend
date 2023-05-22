@@ -45,7 +45,7 @@
 # CMD serve -s build -l 8080
 
 # Base image
-FROM node:14-alpine AS build
+FROM node:14-alpine AS development
 
 # Set working directory
 WORKDIR /app
@@ -56,25 +56,9 @@ COPY package*.json ./
 # Install dependencies
 RUN yarn install
 
-# RUN yarn run test
-
 # Copy application files
 COPY . .
 
-# Build the React app
-RUN yarn run build
-
-# Production-ready image
-FROM nginx:alpine
-
-# Copy built files from previous stage
-COPY --from=build /app/build /usr/share/nginx/html
-
-# Copy custom Nginx configuration if needed
-# COPY nginx.conf /etc/nginx/nginx.conf
-
-# Expose port 80 (default for Nginx)
 EXPOSE 80
-
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Development environment
+CMD ["yarn", "start"]
