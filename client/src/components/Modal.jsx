@@ -10,12 +10,21 @@ const PopOverModal = ({ showTicket }) => {
         console.log('Success:', values);
         LoadTicketCollection.saveResponse(values.message, showTicket.ticket.id);
 
-        // const getResponse = await LoadTicketCollection.getResponse();
-        // setResponse(getResponse?.map((response) => {
-        //     if (response.nodeA.id === showTicket.ticket.id) {
-        //         return response.nodeB.msg
-        //     }
-        // }));
+        const mailServiceUrl = "http://127.0.0.1:7071/api/HttpExample?requesttype=response"
+
+        const header = {
+            "method": "POST",
+            "body": JSON.stringify({
+                id: showTicket.ticket.id,
+                firstname: showTicket.ticket.firstname,
+                email: showTicket.ticket.email,
+            })
+        }
+        try {
+            fetch(mailServiceUrl, header);
+        } catch (e) {
+            console.log(e)
+        }
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -27,10 +36,9 @@ const PopOverModal = ({ showTicket }) => {
         const getResponse = await LoadTicketCollection.getResponse();
         setResponse(getResponse?.map((response) => {
             if (response.nodeA.id === showTicket.ticket.id) {
-                return response.nodeB.msg
+                return `Admin: ${response.nodeB.msg}`
             }
         }));
-        // console.log(getResponse?.map((response) => response.nodeB.msg))
     };
 
     const handleOk = () => {
@@ -48,7 +56,7 @@ const PopOverModal = ({ showTicket }) => {
             </Button>
             <Modal title="Ticket" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                 <p>{`${showTicket.ticket.firstname}: ${showTicket.ticket.msg}`}</p>
-                <p>{response}</p>
+                {response}
                 <Form
                     name="basic"
                     initialValues={{ remember: true }}
