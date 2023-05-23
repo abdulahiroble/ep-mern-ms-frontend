@@ -15,9 +15,11 @@ const PopOverModal = ({ showTicket }) => {
         const header = {
             "method": "POST",
             "body": JSON.stringify({
-                id: showTicket.ticket.id,
+                ticketId: showTicket.ticket.id,
                 firstname: showTicket.ticket.firstname,
                 email: showTicket.ticket.email,
+                ticketMsg: showTicket.ticket.msg,
+                ticketResponse: values.message
             })
         }
         try {
@@ -34,11 +36,12 @@ const PopOverModal = ({ showTicket }) => {
     const showModal = async () => {
         setIsModalOpen(true);
         const getResponse = await LoadTicketCollection.getResponse();
-        setResponse(getResponse?.map((response) => {
+        console.log(getResponse)
+        getResponse?.map((response) => {
             if (response.nodeA.id === showTicket.ticket.id) {
-                return `Admin: ${response.nodeB.msg}`
+                setResponse(`Admin: ${response.nodeB.msg}`)
             }
-        }));
+        })
     };
 
     const handleOk = () => {
