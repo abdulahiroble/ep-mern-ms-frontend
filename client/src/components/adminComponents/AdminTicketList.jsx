@@ -17,19 +17,7 @@ const AdminTicketList = () => {
         loadData()
     }, [])
 
-    // console.log(initialData.object._fields.map((ticket) => ticket))
     console.log(initialData.object?.map((item) => item._fields[0].properties.firstname))
-    // console.log(initialData?.object?._fields)
-
-    // console.log(initialData?.object?.map((item, index) => item._fields[0].properties.firstname))
-
-
-
-    // {initialData.object.map((item, index) => (
-    //     <div key={index}>{item._fields[0].properties.firstname}</div>
-    //   ))}
-
-
 
     const columns = [
         {
