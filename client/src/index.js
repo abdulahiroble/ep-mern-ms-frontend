@@ -3,7 +3,7 @@ import React from 'react';
 import App from './App';
 import './index.css';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from "axios";
 // #endregion
 
@@ -21,10 +21,11 @@ import AdminLog from './pages/AdminLogfiles'
 // #endregion
 
 //#region ==== OTHER ====
-import {ProtectedRoute} from './services/MiddleWare/ProtectedRoute';
-import {ProtectedAdminRoute} from './services/MiddleWare/ProtectedAdminRoute';
+import { ProtectedRoute } from './services/MiddleWare/ProtectedRoute';
+import { ProtectedAdminRoute } from './services/MiddleWare/ProtectedAdminRoute';
 import AxiosSetup from './config/AxiosSetup'
 import './index.css';
+import TicketThread from 'pages/TicketThread';
 // #endregion
 
 // AxiosSetup();
@@ -50,8 +51,9 @@ ReactDOM.render(
       <Route path="eventdetails3" element={<EventDetail2 />} />
       <Route path="contact" element={<ContactForm />} />
       <Route path="activate/:token" element={<UserActivate />} />
+      <Route path="ticket/:id" element={<TicketThread />} />
       <Route path="admin" element={<ProtectedAdminRoute><AdminUI /></ProtectedAdminRoute>} />
-      <Route path="admin/logs" element={<ProtectedAdminRoute><AdminLog/></ProtectedAdminRoute>} />
+      <Route path="admin/logs" element={<ProtectedAdminRoute><AdminLog /></ProtectedAdminRoute>} />
 
       {/* <BrowserRouter>
         <Routes>
