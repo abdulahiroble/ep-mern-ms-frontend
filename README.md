@@ -37,7 +37,7 @@ cd microservice
 npm install
 ```
 
-### 4. Envrionments:
+### 3. Envrionments:
 
 MYSQL_HOST = localhost
 MYSQL_PORT = 3306
