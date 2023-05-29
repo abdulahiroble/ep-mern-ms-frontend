@@ -52,19 +52,19 @@ JWT_PRIVATE_KEY = AAJ-AWESOME-KEY
 ### 1 
 importer alle tables fra /start/mysql
 ### 2 importer alle roller
-http://localhost:3001/api/create/role
+http://20.240.22.114/api/create/role
 {
     "role" : "customer"
 }
 
-http://localhost:3001/api/create/role
+http://20.240.22.114/api/create/role
 {
     "role" : "admin"
 }
 
 ### 3 Importer brugere du har lyst til
 
-http://localhost:3001/api/users
+http://20.240.22.114/api/users
 
 {
     "firstname": "Admin",
@@ -82,7 +82,7 @@ http://localhost:3001/api/users
 
 Indsæt en valid email, i email feltet:
 
-http://localhost:3001/api/users
+http://20.240.22.114/api/users
 
 {
     "firstname": "Admin",
@@ -174,7 +174,7 @@ REACT_APP_PROD_URL = http://20.240.18.244/<br>
 
 
 # DEVELOPMENT
-REACT_APP_DEVELOPMENT_AUTH_URL = http://localhost:3001/ms/auth<br>
+REACT_APP_DEVELOPMENT_AUTH_URL = http://20.240.22.114/ms/auth<br>
 REACT_APP_DEVELOPMENT_SEARCH_SERVICE_URL = http://localhost:3002 <br>
 REACT_APP_DEVELOPMENT_API_URL = http://localhost:3001<br>
 # REACT_APP_ENVIRONMENT=dev
