@@ -30,7 +30,7 @@ const PopOverModal = ({ showTicket }) => {
     //         }
     //     }
 
-    // };
+    };
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
