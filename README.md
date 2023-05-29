@@ -1,9 +1,157 @@
 # Step by Step Guide
-asd
+This is a step by step guide on how to setup each microservice and the frontend.
 
-# Endpoints & Github URL
+## 1. Frontend service
 
-## Frontend
+### 1. Cd into the frontend folder
+
+```bash
+cd client
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Start the frontend
+
+```bash
+
+npm start
+```
+
+## 2. Auth Service
+
+### 1. Cd into the auth service folder
+
+```bash
+cd microservice
+```
+
+### 2. Install dependencies
+
+```bash
+
+npm install
+```
+
+### 3. Envrionments:
+
+MYSQL_HOST = localhost
+MYSQL_PORT = 3306
+MYSQL_USER = <Your user here>
+MYSQL_PASS = <Your Password here>
+MYSQL_DB = ep_db
+
+JWT_PRIVATE_KEY = AAJ-AWESOME-KEY
+
+## Follow these steps in order
+
+### 1 
+importer alle tables fra /start/mysql
+### 2 importer alle roller
+http://localhost:3001/api/create/role
+{
+    "role" : "customer"
+}
+
+http://localhost:3001/api/create/role
+{
+    "role" : "admin"
+}
+
+### 3 Importer brugere du har lyst til
+
+http://localhost:3001/api/users
+
+{
+    "firstname": "Admin",
+    "lastname": "Admin",
+    "email": "aa@a.dk",
+    "address": "address12",
+    "postal": 1235,
+    "phone": 12345679,
+    "password": "1234",
+    "isActive": false,
+    "userRole": "admin"
+}
+
+### 4 (optional) Test email service
+
+Indsæt en valid email, i email feltet:
+
+http://localhost:3001/api/users
+
+{
+    "firstname": "Admin",
+    "lastname": "Admin",
+    "email": "Andreas1992@outlook.dk",
+    "address": "address12",
+    "postal": 1235,
+    "phone": 12345679,
+    "password": "1234",
+    "isActive": false,
+    "userRole": "admin"
+}
+
+### 3. Start the auth service
+
+```bash
+
+npm start
+```
+
+## 3. Search Service
+
+### 1. Cd into the search service folder
+
+```bash
+cd search-microservice
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the search service
+
+```bash
+npm start
+```
+
+## 4. Ticket Service
+
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Start the ticket service
+
+```bash
+npm start
+```
+
+## 5. Mail Service
+
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Start the mail service
+
+```bash
+npm start
+```
+
+
 http://20.240.18.244/
 ## API
 https://github.com/AndreasP-92/ep-mern-api<br>
