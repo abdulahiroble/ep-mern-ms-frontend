@@ -10,23 +10,26 @@ const PopOverModal = ({ showTicket }) => {
         console.log('Success:', values);
         LoadTicketCollection.saveResponse(values.message, showTicket.ticket.id);
 
-        const mailServiceUrl = "http://127.0.0.1:7071/api/HttpExample?requesttype=response"
+    //     if(process.env.REACT_APP_ENVIRONMENT_PROD == "false"){
+    //         const mailServiceUrl = "http://127.0.0.1:7071/api/HttpExample?requesttype=response"
 
-        const header = {
-            "method": "POST",
-            "body": JSON.stringify({
-                ticketId: showTicket.ticket.id,
-                firstname: showTicket.ticket.firstname,
-                email: showTicket.ticket.email,
-                ticketMsg: showTicket.ticket.msg,
-                ticketResponse: values.message
-            })
-        }
-        try {
-            fetch(mailServiceUrl, header);
-        } catch (e) {
-            console.log(e)
-        }
+    //         const header = {
+    //             "method": "POST",
+    //             "body": JSON.stringify({
+    //                 ticketId: showTicket.ticket.id,
+    //                 firstname: showTicket.ticket.firstname,
+    //                 email: showTicket.ticket.email,
+    //                 ticketMsg: showTicket.ticket.msg,
+    //                 ticketResponse: values.message
+    //             })
+    //         }
+    //         try {
+    //             fetch(mailServiceUrl, header);
+    //         } catch (e) {
+    //             console.log(e)
+    //         }
+    //     }
+
     };
 
     const onFinishFailed = (errorInfo) => {

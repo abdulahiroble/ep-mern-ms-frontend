@@ -36,7 +36,7 @@ const App = () => {
       }
 
       alert("Success")
-      // navigate("/")
+      navigate("/")
     // CHECK IF ERROR
     }else if(result.data.errorCdoe != ""){
       if(result.data.errorCode == "E101"){
