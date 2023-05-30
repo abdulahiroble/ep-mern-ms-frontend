@@ -49,7 +49,7 @@ class LoadUserCollection {
 
     registerUser = async (data) => {
         console.log("DATA===",data)
-        const result = await axios.post(`${url}/users`, data)
+        const result = await axios.post(`${url}/users/${data.id}`, data)
         console.log("RESULT=====", result)
 
         return result;
